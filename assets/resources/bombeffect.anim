@@ -1,0 +1,195 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bombeffect",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.75,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "01": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.08333333333333333,
+              "value": true
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": false
+            }
+          ]
+        },
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": [
+              {
+                "frame": 0,
+                "value": {
+                  "__uuid__": "b89929bc-c711-42c1-b9dd-a51d9332e393"
+                }
+              },
+              {
+                "frame": 0.08333333333333333,
+                "value": {
+                  "__uuid__": "b89929bc-c711-42c1-b9dd-a51d9332e393"
+                }
+              },
+              {
+                "frame": 0.16666666666666666,
+                "value": {
+                  "__uuid__": "174c2a45-2564-48f8-b4ef-bd77e57f3d12"
+                }
+              },
+              {
+                "frame": 0.25,
+                "value": {
+                  "__uuid__": "20db187b-ac7e-4331-aaee-b438c0f334bc"
+                }
+              },
+              {
+                "frame": 0.3333333333333333,
+                "value": {
+                  "__uuid__": "4030f37c-c4a1-4345-8d86-31561520ba00"
+                }
+              },
+              {
+                "frame": 0.4166666666666667,
+                "value": {
+                  "__uuid__": "f9446d43-556c-4df2-a2ed-619dff21f4c4"
+                }
+              },
+              {
+                "frame": 0.5,
+                "value": {
+                  "__uuid__": "dcd7cb82-2fa5-4d72-b5ab-4b1e6e400769"
+                }
+              },
+              {
+                "frame": 0.5833333333333334,
+                "value": {
+                  "__uuid__": "38976f78-e525-4743-8c6b-26c21b367bca"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "00a": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.25,
+              "value": true
+            },
+            {
+              "frame": 0.75,
+              "value": false
+            }
+          ],
+          "x": [
+            {
+              "frame": 0.25,
+              "value": -70
+            },
+            {
+              "frame": 0.4166666666666667,
+              "value": -103
+            },
+            {
+              "frame": 0.75,
+              "value": -127
+            }
+          ],
+          "opacity": [
+            {
+              "frame": 0.25,
+              "value": 255
+            },
+            {
+              "frame": 0.75,
+              "value": 100
+            }
+          ]
+        }
+      },
+      "00": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.25,
+              "value": true
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": false
+            }
+          ],
+          "x": [
+            {
+              "frame": 0.25,
+              "value": 50
+            },
+            {
+              "frame": 0.4166666666666667,
+              "value": 75
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": 127
+            }
+          ],
+          "opacity": [
+            {
+              "frame": 0.25,
+              "value": 255
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": 50
+            }
+          ]
+        }
+      },
+      "light": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.08333333333333333,
+              "value": 100
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.13333333333333333,
+      "func": "bombFinish",
+      "params": []
+    }
+  ]
+}

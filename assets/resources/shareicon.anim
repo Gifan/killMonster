@@ -1,0 +1,79 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "shareicon",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1.25,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "paths": {
+      "btn_share": {
+        "props": {
+          "scaleX": [
+            {
+              "frame": 0,
+              "value": 0.7
+            },
+            {
+              "frame": 0.5,
+              "value": 0.7
+            },
+            {
+              "frame": 0.6333333333333333,
+              "value": 0.6
+            },
+            {
+              "frame": 0.75,
+              "value": 0.8
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": 0.65
+            },
+            {
+              "frame": 1.0833333333333333,
+              "value": 0.75
+            },
+            {
+              "frame": 1.25,
+              "value": 0.7
+            }
+          ],
+          "scaleY": [
+            {
+              "frame": 0,
+              "value": 0.7
+            },
+            {
+              "frame": 0.5,
+              "value": 0.7
+            },
+            {
+              "frame": 0.6333333333333333,
+              "value": 0.8
+            },
+            {
+              "frame": 0.75,
+              "value": 0.6
+            },
+            {
+              "frame": 0.9166666666666666,
+              "value": 0.75
+            },
+            {
+              "frame": 1.0833333333333333,
+              "value": 0.65
+            },
+            {
+              "frame": 1.25,
+              "value": 0.7
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
