@@ -32,8 +32,9 @@ window.GRID_HEIGHT = 100;
 
 window.BOX_SHARE = false;
 window.SKIN_SHARE = false;
-
-
+window.MOVEGAME = true;
+window.NEWYEAR = false;
+window.SHOWNEWYEAR = false;
 //类型0：空 类型2：士兵  类型1：可消除普通糖果 类型3：障碍 类型4：金币 类型5：功能性糖果
 window.BLOCKLIST = [
     [],

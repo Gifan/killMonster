@@ -10,6 +10,7 @@ window.need_add = false;
 window.firstshare = false;
 window.firstvideo = false;
 let time = 0;
+cc.view.enableRetina(true);
 if (typeof (wx) != "undefined") {
     wx.onHide(() => {
         // console.log("==========wx HIDE==============");

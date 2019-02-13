@@ -122,6 +122,15 @@ cc.Class({
         if (this.m_n_luckyvideo.active) {//第一关不出现
             this.m_n_luckyvideo.scale = 0;
             this.m_n_luckyvideo.runAction(cc.sequence(cc.scaleTo(0.2, 1.2, 1.2).easing(cc.easeIn(3.0)), cc.scaleTo(0.1, 1, 1)));
+            if (window.SKIN_SHARE) {
+                let node = cc.find("btn_cancel", this.m_n_luckyvideo);
+                node.y = -570;
+                this.scheduleOnce(() => {
+                    node.y = -514;
+                    if (this.m_n_luckyvideo.active && !this.showAdb)
+                        this.showAdBanner(true);
+                }, 1.8)
+            }
         }
     },
 
@@ -180,6 +189,7 @@ cc.Class({
 
     onKeepGoing() {
         this.m_n_luckyvideo.active = false;
+        this.showAdBanner(false);
     },
 
     touchEnd(event) {
@@ -756,7 +766,18 @@ cc.Class({
             this.m_n_reliveview.active = true;
             this.m_n_reliveview.scale = 0;
             this.m_n_reliveview.runAction(cc.sequence(cc.scaleTo(0.2, 1.2, 1.2).easing(cc.easeIn(3.0)), cc.scaleTo(0.1, 1, 1)));
-            this.showAdBanner(true);
+            if (window.SKIN_SHARE) {
+                this.showAdBanner(false);
+                let node = cc.find("btn_close", this.m_n_reliveview);
+                node.y = -585;
+                this.scheduleOnce(() => {
+                    node.y = -514;
+                    if (!this.showAdb)
+                        this.showAdBanner(true);
+                }, 1.3)
+            } else {
+                this.showAdBanner(true);
+            }
         }
         else {
             this.m_n_displaycheck.active = false;
@@ -814,8 +835,11 @@ cc.Class({
         this.m_videoAd.load()
             .then(() => {
                 self.m_videoAd.show();
+                self.showAdb = true;
                 self.m_videoAd.onClose((status) => {
                     self.m_videoAd.offClose();
+                    self.showAdb = false;
+                    self.showAdBanner(false);
                     if (status && status.isEnded || status === undefined) {
                         self.videoReward(custom);
                     } else {
