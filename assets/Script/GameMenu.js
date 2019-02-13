@@ -13,6 +13,7 @@ cc.Class({
         m_l_mystepname: cc.Label,
         m_n_starlist: { type: cc.Node, default: [] },
         m_n_skinpanel: cc.Node,
+        m_n_moregame: cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -27,7 +28,7 @@ cc.Class({
         EVENT_LISTENER.on(window.GAME_UPDATE_DATA, this.updateGold, this);
         this.m_l_maingold.string = window.INIT_GAME_SAVE_DATA.gold_num;
         this.showGameClubButton();
-        Utils.playBgmMusic(window.BGM, 0.5);
+
         this.updateMusicBtnSprite(window.MUSIC_SHOW_OFF);
         RankList.setScore(window.INIT_GAME_SAVE_DATA.top_score);
         if (typeof (wx) != "undefined") {
@@ -41,8 +42,24 @@ cc.Class({
                 }
             });
         }
+
         this.showAdBanner(true);
+        if (!window.SHOWNEWYEAR && window.NEWYEAR) {
+            Utils.loadRes("prefabs/happynewyear", cc.Prefab, (obj) => {
+                let node = cc.instantiate(obj);
+                node.zIndex = 1 << 10;
+                node.parent = this.node;
+                window.SHOWNEWYEAR = true;
+            })
+        } else {
+            Utils.playBgmMusic(window.BGM, 0.5);
+        }
         this.initMyData();
+        this.m_n_moregame.active = window.MOVEGAME;
+    },
+
+    playmuisc() {
+        Utils.playBgmMusic(window.BGM, 0.5);
     },
 
     initMyData() {
@@ -107,7 +124,7 @@ cc.Class({
         });
     },
 
-    onOpenSkinPanel(){
+    onOpenSkinPanel() {
         this.m_n_skinpanel.active = true;
     },
 
@@ -165,7 +182,7 @@ cc.Class({
     onMoreGame() {
         if (typeof (wx) != 'undefined' && wx.navigateToMiniProgram) {
             wx.navigateToMiniProgram({
-                appId: "wx4d67477f46a30ea9",
+                appId: "wx7109309214f4c86e",
                 //target: "wx6ee9cae077851dfa",
                 success: res => {
                     console.log('跳转成功');
@@ -237,9 +254,13 @@ cc.Class({
         var PosY = ((Size.height - pos.y) * adaptScaleH);
 
         let self = this;
-        if (this.m_bannerad) {
-            this.m_bannerad.destroy();
-            this.m_bannerad = null;
+        if (!boo) {
+            if (this.m_bannerad) {
+                this.m_bannerad.hide();
+            }
+        } else {
+            if (this.m_bannerad)
+                this.m_bannerad.show();
         }
         if (!this.m_bannerad && boo) {
             if (system.SDKVersion < '2.0.4') {

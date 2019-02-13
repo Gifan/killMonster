@@ -30,7 +30,7 @@ cc.Class({
             self.loadres();
             self.loadconfig();
         })));
-
+        // cc.view.enableRetina(true);
         let boo = cc.sys.localStorage.getItem('music');
         let guideboo = cc.sys.localStorage.getItem('guideinfo');
         let change = cc.sys.localStorage.getItem('change');
@@ -68,6 +68,8 @@ cc.Class({
             } else {
                 window.BOX_SHARE = netobj.box_share;
                 window.SKIN_SHARE = netobj.skin_share;
+                window.MOVEGAME = netobj.moregame;
+                window.NEWYEAR = netobj.newyear;
                 console.warn(netobj);
                 this$1._loadnum++;
                 this$1.enterGame();

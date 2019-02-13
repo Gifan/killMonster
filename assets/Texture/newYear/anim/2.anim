@@ -1,0 +1,469 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "2",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 3,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "paths": {
+      "pig": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ],
+          "scaleX": [
+            {
+              "frame": 0,
+              "value": 1
+            }
+          ],
+          "scaleY": [
+            {
+              "frame": 0,
+              "value": 1
+            }
+          ],
+          "y": [
+            {
+              "frame": 0,
+              "value": -279
+            }
+          ],
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -3
+            },
+            {
+              "frame": 1,
+              "value": -3
+            },
+            {
+              "frame": 2.0166666666666666,
+              "value": 3
+            },
+            {
+              "frame": 2.5,
+              "value": 3
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "bg": {
+        "props": {
+          "scaleX": [
+            {
+              "frame": 0,
+              "value": 1
+            }
+          ],
+          "scaleY": [
+            {
+              "frame": 0,
+              "value": 1
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ],
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": 1
+            },
+            {
+              "frame": 1,
+              "value": 1
+            },
+            {
+              "frame": 2,
+              "value": -1
+            },
+            {
+              "frame": 2.5,
+              "value": -1
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "bgblack": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 180
+            }
+          ]
+        }
+      },
+      "zf_btn_open": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "tips1": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      },
+      "bg/d1": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 1.0166666666666666,
+              "value": -5
+            },
+            {
+              "frame": 2.5,
+              "value": 5
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "bg/d2": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 1.0166666666666666,
+              "value": -5
+            },
+            {
+              "frame": 2.5,
+              "value": 5
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/hat1": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": -10
+            },
+            {
+              "frame": 1,
+              "value": 10
+            },
+            {
+              "frame": 1.1666666666666667,
+              "value": -10
+            },
+            {
+              "frame": 1.5,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/hat2": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": 10
+            },
+            {
+              "frame": 1,
+              "value": -10
+            },
+            {
+              "frame": 1.1666666666666667,
+              "value": 10
+            },
+            {
+              "frame": 1.5,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/ear1": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 2,
+              "value": 0
+            },
+            {
+              "frame": 2.5,
+              "value": 20
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/ear2": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 2,
+              "value": 0
+            },
+            {
+              "frame": 2.5,
+              "value": -20
+            },
+            {
+              "frame": 3,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/nose": {
+        "props": {
+          "scaleX": [
+            {
+              "frame": 0.5,
+              "value": 1
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": 1.2
+            },
+            {
+              "frame": 1.5,
+              "value": 1
+            },
+            {
+              "frame": 2,
+              "value": 1
+            },
+            {
+              "frame": 2.3333333333333335,
+              "value": 1.2
+            },
+            {
+              "frame": 3,
+              "value": 1
+            }
+          ],
+          "scaleY": [
+            {
+              "frame": 0.5,
+              "value": 1
+            },
+            {
+              "frame": 0.8333333333333334,
+              "value": 1.2
+            },
+            {
+              "frame": 1.5,
+              "value": 1
+            },
+            {
+              "frame": 2,
+              "value": 1
+            },
+            {
+              "frame": 2.3333333333333335,
+              "value": 1.2
+            },
+            {
+              "frame": 3,
+              "value": 1
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/paper1": {
+        "props": {
+          "rotation": [
+            {
+              "frame": 0,
+              "value": -7
+            },
+            {
+              "frame": 0.75,
+              "value": -12
+            },
+            {
+              "frame": 1.5,
+              "value": -7
+            },
+            {
+              "frame": 2.25,
+              "value": -2
+            },
+            {
+              "frame": 3,
+              "value": -7
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "tips": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "pig/body": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            }
+          ]
+        }
+      },
+      "bgblack1": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      },
+      "guang": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      },
+      "paper": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      },
+      "ok": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}
