@@ -59,22 +59,23 @@ cc.Class({
 
     loadconfig() {
         let this$1 = this;
-        let remoteUrl = 'https://gifen-1253495541.cosgz.myqcloud.com/KillMonster/share_config.json';
-        cc.loader.load(remoteUrl, function (err, netobj) {
-            if (err) {
-                console.error(err);
-                this$1._loadnum++;
-                this$1.enterGame();
-            } else {
-                window.BOX_SHARE = netobj.box_share;
-                window.SKIN_SHARE = netobj.skin_share;
-                window.MOVEGAME = netobj.moregame;
-                window.NEWYEAR = netobj.newyear;
-                console.warn(netobj);
-                this$1._loadnum++;
-                this$1.enterGame();
-            }
-        });
+        this$1._loadnum++;
+        this$1.enterGame();
+        // let remoteUrl = 'https://gifen-1253495541.cosgz.myqcloud.com/KillMonster/share_config.json';
+        // cc.loader.load(remoteUrl, function (err, netobj) {
+        //     if (err) {
+        //         console.error(err);
+        //         this$1._loadnum++;
+        //         this$1.enterGame();
+        //     } else {
+        //         window.BOX_SHARE = netobj.box_share;
+        //         window.SKIN_SHARE = netobj.skin_share;
+        //         window.MOVEGAME = netobj.moregame;
+        //         window.NEWYEAR = netobj.newyear;
+        //         console.warn(netobj);
+
+        //     }
+        // });
     },
 
     loadres() {
@@ -84,106 +85,117 @@ cc.Class({
         for (let i = 1; i < 4; i++) {
             window.tempFileURL.push("");
         }
-        // if (typeof (wx) != 'undefined') {
-        //     wx.showLoading({
-        //         title: "登录中..."
-        //     });
+        if (typeof (wx) != 'undefined') {
+            wx.showLoading({
+                title: "登录中..."
+            });
 
-        //     wx.cloud.getTempFileURL({
-        //         fileList: ['cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/game_config/level_config2.json',
-        //             'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share1.jpg',
-        //             'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_normal.jpg',
-        //             'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_result.jpg',
-        //             'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_box.jpg'],
-        //         success: (res) => {
-        //             // console.log(res.fileList[0]);
-        //             window.tempFileURL = [];
-        //             let data = res.fileList[0];
-        //             for (let i = 1; i < res.fileList.length; i++) {
-        //                 window.tempFileURL.push(res.fileList[i].tempFileURL);
-        //             }
+            // wx.cloud.getTempFileURL({
+            //     fileList: ['cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/game_config/level_config2.json',
+            //         'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share1.jpg',
+            //         'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_normal.jpg',
+            //         'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_result.jpg',
+            //         'cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/share_templates/share_box.jpg'],
+            //     success: (res) => {
+            //         // console.log(res.fileList[0]);
+            //         window.tempFileURL = [];
+            //         let data = res.fileList[0];
+            //         for (let i = 1; i < res.fileList.length; i++) {
+            //             window.tempFileURL.push(res.fileList[i].tempFileURL);
+            //         }
 
-        //             if (data.status == 0) {
-        //                 cc.loader.load(data.tempFileURL, function (err, netobj) {
-        //                     if (err) {
-        //                         cc.loader.loadRes('level_config2', function (err, obj) {
-        //                             if (err) {
-        //                                 cc.error(err.message || err);
-        //                                 return;
-        //                             }
-        //                             window.MAP_CONFIG = obj;
-        //                             window.dailypointdata = obj.daily_step;
-        //                             self._loadnum++;
-        //                             self.enterGame();
-        //                         });
-        //                     } else {
-        //                         window.MAP_CONFIG = netobj
-        //                         self._loadnum++;
-        //                         self.enterGame();
-        //                     }
-        //                 });
-        //             } else {
-        //                 cc.loader.loadRes('level_config', function (err, obj) {
-        //                     if (err) {
-        //                         cc.error(err.message || err);
-        //                         return;
-        //                     }
-        //                     window.MAP_CONFIG = obj;
-        //                     self._loadnum++;
-        //                     self.enterGame();
-        //                 });
-        //             }
-        //         },
-        //         fail: () => {
-        //             cc.loader.loadRes('level_config2', function (err, obj) {
-        //                 if (err) {
-        //                     cc.error(err.message || err);
-        //                     return;
-        //                 }
-        //                 window.MAP_CONFIG = obj;
-        //                 self._loadnum++;
-        //                 self.enterGame();
-        //             });
-        //         }
-        //     })
-        //     //登录
-        //     wx.cloud.callFunction({
-        //         // 云函数名称
-        //         name: 'login',
-        //         // 传给云函数的参数
-        //         success: function (res) {
-        //             console.log(res)
-        //             window.userInfo = res.result;
-        //             Utils.getSaveData(res => {
-        //                 window.getdata = true;
-        //                 self._loadnum++;
-        //                 self.enterGame();
-        //             })
-        //         },
-        //         fail: (err) => {
-        //             console.error(err);
-        //             wx.showModal({
-        //                 title: "提示",
-        //                 content: "登录异常，请稍后重试:" + err.Msg,
-        //                 showCancel: false,
-        //                 success: () => {
-        //                     wx.exitMiniProgram();
-        //                 }
-        //             })
-        //         }
-        //     })
-        // } else {
-        self._loadnum = 1;
-        cc.loader.loadRes('level_config2', function (err, obj) {
-            if (err) {
-                cc.error(err.message || err);
-                return;
-            }
-            window.MAP_CONFIG = obj.json;
-            self._loadnum++;
-            self.enterGame();
-        });
-        // }
+            //         if (data.status == 0) {
+            //             cc.loader.load(data.tempFileURL, function (err, netobj) {
+            //                 if (err) {
+            //                     cc.loader.loadRes('level_config2', function (err, obj) {
+            //                         if (err) {
+            //                             cc.error(err.message || err);
+            //                             return;
+            //                         }
+            //                         window.MAP_CONFIG = obj;
+            //                         window.dailypointdata = obj.daily_step;
+            //                         self._loadnum++;
+            //                         self.enterGame();
+            //                     });
+            //                 } else {
+            //                     window.MAP_CONFIG = netobj
+            //                     self._loadnum++;
+            //                     self.enterGame();
+            //                 }
+            //             });
+            //         } else {
+            //             cc.loader.loadRes('level_config2', function (err, obj) {
+            //                 if (err) {
+            //                     cc.error(err.message || err);
+            //                     return;
+            //                 }
+            //                 window.MAP_CONFIG = obj;
+            //                 self._loadnum++;
+            //                 self.enterGame();
+            //             });
+            //         }
+            //     },
+            //     fail: () => {
+            //         cc.loader.loadRes('level_config2', function (err, obj) {
+            //             if (err) {
+            //                 cc.error(err.message || err);
+            //                 return;
+            //             }
+            //             window.MAP_CONFIG = obj;
+            //             self._loadnum++;
+            //             self.enterGame();
+            //         });
+            //     }
+            // })
+            cc.loader.loadRes('level_config2', function (err, obj) {
+                if (err) {
+                    cc.error(err.message || err);
+                    return;
+                }
+
+                window.MAP_CONFIG = obj.json;
+                self._loadnum++;
+                self.enterGame();
+            });
+            //登录
+            wx.cloud.callFunction({
+                // 云函数名称
+                name: 'login',
+                // 传给云函数的参数
+                success: function (res) {
+                    console.log(res.result.event.userInfo);
+                    window.userInfo = res.result.event.userInfo;
+                    Utils.getSaveData(res => {
+                        window.getdata = true;
+                        self._loadnum++;
+                        self.enterGame();
+                    })
+                },
+                fail: (err) => {
+                    console.error(err);
+                    wx.showModal({
+                        title: "提示",
+                        content: "登录异常，请稍后重试:" + err.Msg,
+                        showCancel: false,
+                        success: () => {
+                            wx.exitMiniProgram();
+                        }
+                    })
+                }
+            })
+        } else {
+            self._loadnum = 1;
+            cc.loader.loadRes('level_config2', function (err, obj) {
+                if (err) {
+                    cc.error(err.message || err);
+                    return;
+                }
+
+                window.MAP_CONFIG = obj.json;
+                self._loadnum++;
+                self.enterGame();
+            });
+        }
 
         this.MyPreloadScene(window.MENU_SCENE_NAME, (completedCount, totalCount, item) => {
             self.m_l_text.string = "游戏加载中..." + Math.floor((completedCount / totalCount) * 100) + "%";

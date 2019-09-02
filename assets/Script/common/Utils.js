@@ -5,7 +5,7 @@ import Data from '../dataStatistics/Data';
  */
 let t = console.log;
 console.log = function (...param) {
-    t(...param);
+    // t(...param);
 }
 var Utils = {
 
@@ -103,7 +103,7 @@ var Utils = {
             })
             DB.collection("todos").doc(window.userInfo.openId).get({
                 success: res => {
-                    // console.log(res.data);
+                    console.log(res.data);
                     if (!res.data.skin) res.data.skin = window.SKIN_CONFIG_STATE;
                     window.INIT_GAME_SAVE_DATA = res.data;
                     if (callback) {
@@ -111,7 +111,7 @@ var Utils = {
                     }
                 },
                 fail: (err) => {
-                    // console.log("fail", err);
+                    console.log("fail", err);
                     window.need_add = true;
                     if (callback) {
                         callback(window.INIT_GAME_SAVE_DATA);

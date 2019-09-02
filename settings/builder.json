@@ -1,17 +1,20 @@
 {
-  "appKey": "",
-  "appSecret": "",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
   "encryptJs": true,
   "excludeScenes": [],
   "fb-instant-games": {},
-  "includeAnySDK": false,
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
-  "jailbreakPlatform": false,
   "md5Cache": true,
   "mergeStartScene": false,
-  "oauthLoginServer": "",
   "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
@@ -20,17 +23,15 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.helloworld",
-  "privateKey": "",
   "qqplay": {
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "renderMode": "0",
   "startScene": "f2475a86-e50d-44fc-a09a-41bf7562e572",
   "title": "killmonster",
   "webOrientation": "auto",
   "wechatgame": {
-    "REMOTE_SERVER_ROOT": "https://gifen-1253495541.cosgz.myqcloud.com/KillMonster/20180727/",
+    "REMOTE_SERVER_ROOT": "https://cdn.heidong.fun/gameres/t3/p1/release/killmonster",
     "appid": "wx54a8976f0e7b431c",
     "isSubdomain": false,
     "orientation": "portrait",

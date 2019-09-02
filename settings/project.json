@@ -7,29 +7,36 @@
   "design-resolution-height": 640,
   "design-resolution-width": 960,
   "excluded-modules": [
-    "CCSpriteDistortion",
     "TiledMap",
     "Spine Skeleton",
+    "RichText",
+    "MotionStreak",
     "ScrollBar",
     "PageView",
     "PageViewIndicator",
     "Slider",
-    "EditorBox",
     "VideoPlayer",
     "WebView",
-    "RichText",
-    "MotionStreak",
     "Collider",
-    "Graphics",
     "Physics",
-    "StudioComponent",
-    "Chipmunk"
+    "StudioComponent"
   ],
+  "facebook": {
+    "appID": "",
+    "audience": {
+      "enable": false
+    },
+    "enable": false,
+    "live": {
+      "enable": false
+    }
+  },
   "fit-height": true,
   "fit-width": false,
   "group-list": [
     "default"
   ],
+  "last-module-event-record-time": 1567406151648,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,
@@ -37,16 +44,5 @@
   },
   "start-scene": "f2475a86-e50d-44fc-a09a-41bf7562e572",
   "use-customize-simulator": false,
-  "use-project-simulator-setting": false,
-  "last-module-event-record-time": 0,
-  "facebook": {
-    "enable": false,
-    "appID": "",
-    "live": {
-      "enable": false
-    },
-    "audience": {
-      "enable": false
-    }
-  }
+  "use-project-simulator-setting": false
 }
