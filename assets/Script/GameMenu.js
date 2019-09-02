@@ -239,7 +239,7 @@ cc.Class({
 
     showAdBanner(boo) {
         if (typeof (wx) == 'undefined') return;
-        let Size = cc.director.getWinSize();
+        let Size = cc.winSize
 
         let Widthnode = cc.find("Canvas/n_funnymap/n_bannerpos");
         var pos = this.node.convertToWorldSpace(Widthnode);

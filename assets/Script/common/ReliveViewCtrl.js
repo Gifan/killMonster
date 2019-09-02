@@ -19,14 +19,14 @@ cc.Class({
     },
 
     start() {
-        this.node.setLocalZOrder(100);    //设置z轴的位置
+        this.node.zindex = 100;    //设置z轴的位置
         this.TimeNum = 10;
         this.TimeTex.string = this.TimeNum;
         this.timeOut = false;
         // this.callbackobj = null;
         this.m_cost_num = window.RELIVE_COST_NUM;
         //设置节点的分辨率
-        var size = cc.director.getWinSize();
+        var size = cc.winSize
         this.m_bg.width = size.width;
         this.m_bg.height = size.height;
         let self = this;

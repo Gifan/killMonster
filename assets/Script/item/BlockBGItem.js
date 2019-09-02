@@ -20,7 +20,7 @@ cc.Class({
     setBrightVisible(boo, color) {
         this.m_n_bright.active = boo;
         if(color){
-            this.m_n_bright.color = cc.hexToColor(color);
+            this.m_n_bright.color = cc.Color.WHITE.fromHEX(color);
         }
     },
     // update (dt) {},

@@ -36,7 +36,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        this.node.setLocalZOrder(100);    //设置z轴的位置
+        this.node.zindex = 100;    //设置z轴的位置
         var size = cc.view.getVisibleSize()
         // this.m_maskbg.width = size.width;
         // this.m_maskbg.height = size.height;

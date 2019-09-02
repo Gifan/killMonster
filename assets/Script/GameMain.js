@@ -113,7 +113,7 @@ cc.Class({
             this.m_n_video.runAction(cc.sequence(cc.delayTime(1.0), cc.repeat(cc.sequence(cc.rotateTo(0.1, -10), cc.rotateTo(0.1, 10)), 3), cc.rotateTo(0.1, 0)));
             this.m_n_doublevideo.runAction(cc.sequence(cc.delayTime(2.0), cc.repeat(cc.sequence(cc.rotateTo(0.1, -10), cc.rotateTo(0.1, 10)), 3), cc.rotateTo(0.1, 0)))
         }, 5);
-        this._configlist = this.m_n_kuai[i].getComponent("ShapeItem").getTheConfig();
+        this._configlist = this.m_n_kuai[0].getComponent("ShapeItem").getTheConfig();
         RankList.checkWillSurpass(this.m_cur_score);
 
         let rand = Utils.random(0, 1000);
@@ -311,18 +311,18 @@ cc.Class({
             //一个个格子放试一下能不能放
             for (var i = 0; i < this.m_maparray.length; i++) {
                 var frameNode = this.m_maparray[i]
-                var srcPos = cc.p(frameNode.x, frameNode.y)
+                var srcPos = cc.v2(frameNode.x, frameNode.y)
                 var count = 1
                 if (!frameNode.isHaveFK) {
                     //这里做是否可以放的判断
                     let children = this._configlist[k];
                     for (var j = 1; j < children.length; j++) {
                         var len = 52 //碰撞距离
-                        var childPos = cc.pAdd(srcPos, cc.p(children[j].x, children[j].y))
+                        var childPos = srcPos.add(cc.v2(children[j].x, children[j].y))
                         //碰撞检测
                         for (var s = 0; s < this.m_maparray.length; s++) {
                             var tFrameNode = this.m_maparray[s]
-                            var dis = cc.pDistance(cc.p(tFrameNode.x, tFrameNode.y), childPos)
+                            var dis = cc.v2(tFrameNode.x, tFrameNode.y).sub(childPos).mag();
                             if (dis <= len && !tFrameNode.isHaveFK) {
                                 count++ //可以放就要累加计数
                             }
@@ -346,7 +346,7 @@ cc.Class({
 
     backIndexofList(pos) {
         for (let i = 0; i < window.INDEX_TO_POINT.length; i++) {
-            if (cc.pDistance(pos, cc.v2(window.INDEX_TO_POINT[i][0], window.INDEX_TO_POINT[i][1])) <= 50) {
+            if (pos.sub(cc.v2(window.INDEX_TO_POINT[i][0], window.INDEX_TO_POINT[i][1])).mag() <= 50) {
                 return i;
             }
         }
@@ -438,21 +438,21 @@ cc.Class({
             this.m_n_boss.scale = 2.5;
             let offset = 10;
             let deltaTime = 0.02;
-            this.m_n_boss.runAction(cc.sequence(cc.spawn(cc.scaleTo(0.8, 1.0).easing(cc.easeBackIn(3.0)), cc.fadeTo(0.8, 255)), cc.moveBy(deltaTime, cc.p(offset * 2, 0)),
-                cc.moveBy(deltaTime * 2, cc.p(-offset * 4)),
-                cc.moveBy(deltaTime, cc.p(offset * 2)),
+            this.m_n_boss.runAction(cc.sequence(cc.spawn(cc.scaleTo(0.8, 1.0).easing(cc.easeBackIn(3.0)), cc.fadeTo(0.8, 255)), cc.moveBy(deltaTime, cc.v2(offset * 2, 0)),
+                cc.moveBy(deltaTime * 2, cc.v2(-offset * 4)),
+                cc.moveBy(deltaTime, cc.v2(offset * 2)),
 
-                cc.moveBy(deltaTime, cc.p(0, offset * 2)),
-                cc.moveBy(deltaTime * 2, cc.p(0, -offset * 4)),
-                cc.moveBy(deltaTime, cc.p(0, offset * 2)),
+                cc.moveBy(deltaTime, cc.v2(0, offset * 2)),
+                cc.moveBy(deltaTime * 2, cc.v2(0, -offset * 4)),
+                cc.moveBy(deltaTime, cc.v2(0, offset * 2)),
 
-                cc.moveBy(deltaTime, cc.p(offset, 0)),
-                cc.moveBy(deltaTime * 2, cc.p(-offset * 2, 0)),
-                cc.moveBy(deltaTime, cc.p(offset, 0)),
+                cc.moveBy(deltaTime, cc.v2(offset, 0)),
+                cc.moveBy(deltaTime * 2, cc.v2(-offset * 2, 0)),
+                cc.moveBy(deltaTime, cc.v2(offset, 0)),
 
-                cc.moveBy(deltaTime, cc.p(0, offset)),
-                cc.moveBy(deltaTime * 2, cc.p(0, -offset * 2)),
-                cc.moveBy(deltaTime, cc.p(0, offset)),
+                cc.moveBy(deltaTime, cc.v2(0, offset)),
+                cc.moveBy(deltaTime * 2, cc.v2(0, -offset * 2)),
+                cc.moveBy(deltaTime, cc.v2(0, offset)),
                 cc.fadeOut(1.5)));
         }
     },
@@ -673,12 +673,12 @@ cc.Class({
         }
         blocknode.rotation = angle;
         blocknode.getComponent("RockItem").resetSytem();
-        blocknode.setLocalZOrder(1 << 5);
+        blocknode.zIndex = 1 << 5;
         blocknode.parent = this.m_n_gamenode;
         blocknode.x = x;
         blocknode.y = y;
         blocknode.runAction(cc.sequence(cc.callFunc(() => {
-        }), cc.moveTo(1.0, cc.p(this.m_sp_monster.node.parent.x, this.m_sp_monster.node.parent.y)).easing(cc.easeIn(2.0)), cc.callFunc(() => {
+        }), cc.moveTo(1.0, cc.v2(this.m_sp_monster.node.parent.x, this.m_sp_monster.node.parent.y)).easing(cc.easeIn(2.0)), cc.callFunc(() => {
             self.m_block_pool.put(blocknode);
             blocknode = null;
             self.monsterbeHit(realhurt);
@@ -703,7 +703,7 @@ cc.Class({
             }
             let pos = this.m_maparray[arr[i]].position;
             blocknode.parent = this.m_n_gamenode;
-            blocknode.position = cc.p(this.m_sp_monster.node.parent.x, this.m_sp_monster.node.parent.y);
+            blocknode.position = cc.v2(this.m_sp_monster.node.parent.x, this.m_sp_monster.node.parent.y);
             blocknode.runAction(cc.sequence(cc.callFunc(() => {
                 Utils.SetSoundEffect(window.GET_GOLD, false, 1);
             }), cc.moveTo(0.8, pos).easing(cc.easeIn(2.0)), cc.callFunc(() => {
@@ -1143,7 +1143,7 @@ cc.Class({
 
     showAdBanner(boo) {
         if (typeof (wx) == 'undefined') return;
-        let Size = cc.director.getWinSize();
+        let Size = cc.winSize
 
         let Widthnode = cc.find("Canvas/n_funnymap/n_bannerpos");
         var pos = this.node.convertToWorldSpace(Widthnode);

@@ -27,7 +27,7 @@ export default class BigStepItem extends cc.Component {
     updateData(data, spframe, spframe1, curlv, color: number = 0) {
         let colorlist = ['#33ABEE', '#33EEEE', '#33EE94', '#BAE789'];
         if (data) {
-            this.node.color = cc.hexToColor(colorlist[color]);
+            this.node.color = cc.Color.WHITE.fromHEX(colorlist[color]);
             this.m_sp_stepicon.spriteFrame = spframe;
             this.m_sp_stepname.spriteFrame = spframe1;
             for (let i = 0; i < this.m_n_starlist.length; i++) {

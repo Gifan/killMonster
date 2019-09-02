@@ -14,7 +14,7 @@ export default class Common_CommonUtil {
             var obj = cc.instantiate(prefab);
             obj.getComponent("h5game_Tips").setText(content, hideCallback);
             obj.parent = cc.director.getScene();
-            //obj.position = cc.p(0,0);
+            //obj.position = cc.v2(0,0);
         });
     }
 
@@ -31,21 +31,21 @@ export default class Common_CommonUtil {
         //camera.position = cc.Vec2.ZERO;
         camera.runAction(
             cc.sequence(
-                cc.moveBy(deltaTime, cc.p(offset * 2, 0)),
-                cc.moveBy(deltaTime * 2, cc.p(-offset * 4)),
-                cc.moveBy(deltaTime, cc.p(offset * 2)),
+                cc.moveBy(deltaTime, cc.v2(offset * 2, 0)),
+                cc.moveBy(deltaTime * 2, cc.v2(-offset * 4)),
+                cc.moveBy(deltaTime, cc.v2(offset * 2)),
 
-                cc.moveBy(deltaTime, cc.p(0, offset * 2)),
-                cc.moveBy(deltaTime * 2, cc.p(0, -offset * 4)),
-                cc.moveBy(deltaTime, cc.p(0, offset * 2)),
+                cc.moveBy(deltaTime, cc.v2(0, offset * 2)),
+                cc.moveBy(deltaTime * 2, cc.v2(0, -offset * 4)),
+                cc.moveBy(deltaTime, cc.v2(0, offset * 2)),
 
-                cc.moveBy(deltaTime, cc.p(offset, 0)),
-                cc.moveBy(deltaTime * 2, cc.p(-offset * 2, 0)),
-                cc.moveBy(deltaTime, cc.p(offset, 0)),
+                cc.moveBy(deltaTime, cc.v2(offset, 0)),
+                cc.moveBy(deltaTime * 2, cc.v2(-offset * 2, 0)),
+                cc.moveBy(deltaTime, cc.v2(offset, 0)),
 
-                cc.moveBy(deltaTime, cc.p(0, offset)),
-                cc.moveBy(deltaTime * 2, cc.p(0, -offset * 2)),
-                cc.moveBy(deltaTime, cc.p(0, offset)),
+                cc.moveBy(deltaTime, cc.v2(0, offset)),
+                cc.moveBy(deltaTime * 2, cc.v2(0, -offset * 2)),
+                cc.moveBy(deltaTime, cc.v2(0, offset)),
             )
         )
     }

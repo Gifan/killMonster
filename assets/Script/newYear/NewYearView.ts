@@ -133,7 +133,7 @@ export default class NewYearView extends cc.Component {
         console.error("bannerAlign");
         if (style && typeof (wx) != "undefined") {
             let system = wx.getSystemInfoSync();
-            let Size = cc.director.getWinSize();
+            let Size = cc.winSize
             let Widthnode = cc.find("Canvas/n_funnymap/n_bannerpos");
             var pos = window.GAME_MENU.node.convertToWorldSpace(Widthnode);
 
@@ -201,7 +201,7 @@ export default class NewYearView extends cc.Component {
             if (!startnode) {
                 console.error("截图的节点不能为空");
             }
-            let Size = cc.director.getWinSize();
+            let Size = cc.winSize
             console.log("=======Size.height==========", Size);
             let Widthnode = startnode;
             //截图组合分数的分享图

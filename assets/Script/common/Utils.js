@@ -5,14 +5,14 @@ import Data from '../dataStatistics/Data';
  */
 let t = console.log;
 console.log = function (...param) {
-    // t(...param);
+    t(...param);
 }
 var Utils = {
 
     //适配分辨率默认高度适配，iphonex宽度适配
     setDesignResolution: function () {
         var canvas = cc.find("Canvas").getComponent(cc.Canvas);
-        let winSize = cc.director.getWinSize();
+        let winSize = cc.winSize
         if (winSize.width / winSize.height > 9 / 16) {
             canvas.fitWidth = false;
             canvas.fitHeight = true;
@@ -230,7 +230,7 @@ var Utils = {
     showGetItem(num, type, parentNode, x, y) {
         this.loadRes("prefabs/textbg", cc.Prefab, (obj) => {
             var node = cc.instantiate(obj);
-            node.setLocalZOrder(1000);
+            node.zindex = 1000;
             let labelnode = node.getChildByName('l_num');
             let goldnode = node.getChildByName('sp_gold');
             let boomnode = node.getChildByName('sp_boom');
@@ -256,7 +256,7 @@ var Utils = {
             let movetime = 1.5;
             let dis = 70;
             node.setPosition(xx, yy);
-            var action1 = cc.moveBy(movetime, cc.p(0, dis))
+            var action1 = cc.moveBy(movetime, cc.v2(0, dis))
             var action2 = cc.fadeOut(1)
             node.runAction(cc.sequence(action1, action2, cc.callFunc(() => {
                 node.destroy();
@@ -277,7 +277,7 @@ var Utils = {
      */
     showTipsText(text, parentNode, x, y, font_size, color, time, ydis) {
         var node = new cc.Node('tipstext');
-        node.setLocalZOrder(1000);
+        node.zindex = 1000;
         var label = node.addComponent(cc.Label);
         label.fontFamily = '黑体';
         label.string = text;
@@ -295,7 +295,7 @@ var Utils = {
         let movetime = time ? time : 0.5;
         let dis = ydis ? ydis : 70;
         node.setPosition(xx, yy);
-        var action1 = cc.moveBy(movetime, cc.p(0, dis))
+        var action1 = cc.moveBy(movetime, cc.v2(0, dis))
         var action2 = cc.fadeOut(1)
         node.runAction(cc.sequence(action1, action2, cc.callFunc(() => {
             node.destroy();
@@ -318,7 +318,7 @@ var Utils = {
     showHurtText(text, parentNode, x, y, font_size, color, time, ydis, boo) {
         this.loadRes("prefabs/l_hurt", cc.Prefab, (obj) => {
             var node = cc.instantiate(obj);
-            node.setLocalZOrder(1000);
+            node.zindex = 1000;
             let label = node.getComponent(cc.Label);
             label.string = text;
             let xx = x ? x : 0;
@@ -373,7 +373,7 @@ var Utils = {
         let dir = Utils.random(0, 1000);
         node.anchorY = 0;
         node.position = startpos;
-        node.setLocalZOrder(1000);
+        node.zindex = 1000;
         if (type && type > 0) {
             if (dir > 500) {
                 type = -1 * type;
@@ -403,8 +403,11 @@ var Utils = {
     SetSoundEffect(musicUrl, boo, volum) {
         let voluem = volum ? volum : 1;
         if (window.MUSIC_SHOW_OFF) {
-            var audioUrl = cc.url.raw("resources/" + musicUrl);
-            cc.audioEngine.play(audioUrl, boo, voluem);
+            cc.loader.loadRes(musicUrl, cc.AudioClip,(err,clip)=>{
+                window.bgmAudioID = cc.audioEngine.playEffect(clip, false);
+            })
+            // var audioUrl = cc.url.raw("resources/" + musicUrl);
+            // cc.audioEngine.play(audioUrl, boo, voluem);
         }
     },
 
@@ -416,7 +419,6 @@ var Utils = {
     resumBgmMusic(musicUrl, volum) {
         let url = musicUrl ? musicUrl : window.BGM;
         let voice = volum ? volum : 0.8;
-        console.log("resumBgm", window.MUSIC_SHOW_OFF, window.bgmAudioID);
         try {
             if (window.MUSIC_SHOW_OFF) {
                 if (window.bgmAudioID >= 0) {
@@ -425,8 +427,11 @@ var Utils = {
                 // window.bgmAudioID = -1;
                 else {
                     setTimeout(() => {
-                        var audioUrl = cc.url.raw("resources/" + url);
-                        window.bgmAudioID = cc.audioEngine.play(audioUrl, true, voice);
+                        // var audioUrl = cc.url.raw("resources/" + url);
+                        cc.loader.loadRes(url, cc.AudioClip, (err, clip) => {
+                            window.bgmAudioID = cc.audioEngine.playMusic(clip, true);
+                        })
+
                         // console.error("window.bgmAudioID", window.bgmAudioID);
                     }, 500);
                 }
@@ -434,8 +439,9 @@ var Utils = {
         } catch (error) {
             console.error(error);
             setTimeout(() => {
-                var audioUrl = cc.url.raw("resources/" + url);
-                window.bgmAudioID = cc.audioEngine.play(audioUrl, true, voice);
+                cc.loader.loadRes(url, cc.AudioClip, (err, clip) => {
+                    window.bgmAudioID = cc.audioEngine.playMusic(clip, true);
+                })
                 // console.error("window.bgmAudioID", window.bgmAudioID);
             }, 500);
         }

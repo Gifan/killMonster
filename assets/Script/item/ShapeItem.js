@@ -22,10 +22,10 @@ cc.Class({
         this._type_index = 0;
         this._colorindex = 1;
         // this.updateIndex();
-        if(window.INIT_GAME_SAVE_DATA.top_level < 1 && !window.GUIDE_LEVEL){ //showguai
+        if (window.INIT_GAME_SAVE_DATA.top_level < 1 && !window.GUIDE_LEVEL) { //showguai
             this.resetBlock(22);
             this.GameLayer.showGuide();
-        }else{
+        } else {
             this.resetBlock()
         }
         // let oneNode = this.createItem();
@@ -68,39 +68,39 @@ cc.Class({
         let sin300 = Math.sin(300 * Math.PI / 180);
         let configLists = [
             //一个
-            [cc.p(0, 0)],
+            [cc.v2(0, 0)],
             //四个
-            // [cc.p(0, 0), cc.p(cos60 * a, sin60 * a)],
-            // [cc.p(0, 0), cc.p(cos120 * a, sin120 * a)],
-            // [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0)],
-            [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0), cc.p(h * 3, 0)], //横摆1 ----
-            [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0), cc.p(h + cos60 * a, sin60 * a)], //横摆2   --=-
-            [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0), cc.p(h + cos300 * a, sin300 * a)], //横摆3 --T-
-            [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0), cc.p(cos60 * a, sin60 * a)], //横摆4
-            [cc.p(0, 0), cc.p(h, 0), cc.p(h * 2, 0), cc.p(cos300 * a, sin300 * a)], //横摆5
+            // [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a)],
+            // [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a)],
+            // [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0)],
+            [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0), cc.v2(h * 3, 0)], //横摆1 ----
+            [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0), cc.v2(h + cos60 * a, sin60 * a)], //横摆2   --=-
+            [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0), cc.v2(h + cos300 * a, sin300 * a)], //横摆3 --T-
+            [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0), cc.v2(cos60 * a, sin60 * a)], //横摆4
+            [cc.v2(0, 0), cc.v2(h, 0), cc.v2(h * 2, 0), cc.v2(cos300 * a, sin300 * a)], //横摆5
 
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a * 2, sin60 * a * 2), cc.p(cos120 * a, sin120 * a)], //斜上摆1
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a * 2, sin60 * a * 2), cc.p(cos120 * a + cos60 * a, sin120 * a + sin60 * a)], //斜上摆2
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a * 2, sin60 * a * 2), cc.p(h, 0)], //斜上摆3
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a * 2, sin60 * a * 2), cc.p(cos60 * a + h, sin60 * a)], //斜上摆4
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a * 2, sin60 * a * 2), cc.p(cos60 * a * 3, sin60 * a * 3)], //斜上直线
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a * 2, sin60 * a * 2), cc.v2(cos120 * a, sin120 * a)], //斜上摆1
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a * 2, sin60 * a * 2), cc.v2(cos120 * a + cos60 * a, sin120 * a + sin60 * a)], //斜上摆2
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a * 2, sin60 * a * 2), cc.v2(h, 0)], //斜上摆3
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a * 2, sin60 * a * 2), cc.v2(cos60 * a + h, sin60 * a)], //斜上摆4
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a * 2, sin60 * a * 2), cc.v2(cos60 * a * 3, sin60 * a * 3)], //斜上直线
 
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(cos120 * a * 2, sin120 * a * 2), cc.p(cos120 * a * 2 + h, sin120 * a * 2)], //斜下摆1
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(cos120 * a * 2, sin120 * a * 2), cc.p(cos120 * a - h, sin120 * a)], //斜下摆2
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(cos120 * a * 2, sin120 * a * 2), cc.p(cos120 * a + h, sin120 * a)], //斜下摆3
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(cos120 * a * 2, sin120 * a * 2), cc.p(- h, 0)], //斜下摆4
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(cos120 * a * 2, sin120 * a * 2), cc.p(cos120 * a * 3, sin120 * a * 3)], //斜下直线
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(cos120 * a * 2, sin120 * a * 2), cc.v2(cos120 * a * 2 + h, sin120 * a * 2)], //斜下摆1
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(cos120 * a * 2, sin120 * a * 2), cc.v2(cos120 * a - h, sin120 * a)], //斜下摆2
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(cos120 * a * 2, sin120 * a * 2), cc.v2(cos120 * a + h, sin120 * a)], //斜下摆3
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(cos120 * a * 2, sin120 * a * 2), cc.v2(- h, 0)], //斜下摆4
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(cos120 * a * 2, sin120 * a * 2), cc.v2(cos120 * a * 3, sin120 * a * 3)], //斜下直线
 
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(cos60 * a + h, sin60 * a), cc.p(2 * h, 0)], //拱桥1
-            [cc.p(0, 0), cc.p(cos300 * a, sin300 * a), cc.p(cos300 * a + h, sin300 * a), cc.p(2 * h, 0)], //拱桥2
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(0, 2 * height), cc.p(h, 2 * height)], //拱桥3
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(0, 2 * height), cc.p(-h, 2 * height)], //拱桥4
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(0, 2 * height), cc.p(h, 0)], //拱桥5
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(0, 2 * height), cc.p(-h, 0)], //拱桥6
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(cos60 * a + h, sin60 * a), cc.v2(2 * h, 0)], //拱桥1
+            [cc.v2(0, 0), cc.v2(cos300 * a, sin300 * a), cc.v2(cos300 * a + h, sin300 * a), cc.v2(2 * h, 0)], //拱桥2
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(0, 2 * height), cc.v2(h, 2 * height)], //拱桥3
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(0, 2 * height), cc.v2(-h, 2 * height)], //拱桥4
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(0, 2 * height), cc.v2(h, 0)], //拱桥5
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(0, 2 * height), cc.v2(-h, 0)], //拱桥6
 
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(0, 2 * height), cc.p(cos300 * a, 2 * height + sin300 * a)], //四方四方
-            [cc.p(0, 0), cc.p(cos60 * a, sin60 * a), cc.p(h, 0), cc.p(cos60 * a + h, sin60 * a)],//斜四方/
-            [cc.p(0, 0), cc.p(cos120 * a, sin120 * a), cc.p(-h, 0), cc.p(cos120 * a - h, sin120 * a)],//斜四方\
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(0, 2 * height), cc.v2(cos300 * a, 2 * height + sin300 * a)], //四方四方
+            [cc.v2(0, 0), cc.v2(cos60 * a, sin60 * a), cc.v2(h, 0), cc.v2(cos60 * a + h, sin60 * a)],//斜四方/
+            [cc.v2(0, 0), cc.v2(cos120 * a, sin120 * a), cc.v2(-h, 0), cc.v2(cos120 * a - h, sin120 * a)],//斜四方\
         ]
 
         return configLists
@@ -117,7 +117,7 @@ cc.Class({
         return node
     },
 
-    getCurColorIndex(){
+    getCurColorIndex() {
         return this._colorindex;
     },
 
@@ -251,8 +251,8 @@ cc.Class({
 
         let children = this.node.children[0].children
         for (let i = 0; i < children.length; i++) {
-            let pianyiCPos = cc.pAdd(cc.p(this.node.children[0].x, this.node.children[0].y), cc.p(children[i].x, children[i].y))
-            let childPos = cc.pAdd(this.node.position, pianyiCPos)
+            let pianyiCPos = cc.v2(this.node.children[0].x, this.node.children[0].y).add(cc.v2(children[i].x, children[i].y))
+            let childPos = this.node.position.add(pianyiCPos);
             let frame = this.checkPosFunc(childPos)
 
             if (frame) {
@@ -268,7 +268,7 @@ cc.Class({
         let children = this.GameLayer.m_maparray
         for (let i = 0; i < children.length; i++) {
             let frameNode = children[i];
-            let dis = cc.pDistance(cc.p(frameNode.x, frameNode.y), pos)
+            let dis = cc.v2(frameNode.x, frameNode.y).sub(pos).mag();
             if (dis <= len) {
                 return frameNode
             }
@@ -325,17 +325,17 @@ cc.Class({
         //一个个格子放试一下能不能放
         for (var i = 0; i < this.GameLayer.m_maparray.length; i++) {
             var frameNode = this.GameLayer.m_maparray[i]
-            var srcPos = cc.p(frameNode.x, frameNode.y)
+            var srcPos = cc.v2(frameNode.x, frameNode.y)
             var count = 1
             if (!frameNode.isHaveFK) {
                 //这里做是否可以放的判断
                 for (var j = 1; j < children.length; j++) {
                     var len = 52 //碰撞距离
-                    var childPos = cc.pAdd(srcPos, cc.p(children[j].x, children[j].y))
+                    var childPos = srcPos.add(cc.v2(children[j].x, children[j].y));
                     //碰撞检测
                     for (var k = 0; k < this.GameLayer.m_maparray.length; k++) {
                         var tFrameNode = this.GameLayer.m_maparray[k]
-                        var dis = cc.pDistance(cc.p(tFrameNode.x, tFrameNode.y), childPos)
+                        var dis = cc.v2(tFrameNode.x, tFrameNode.y).sub(childPos).mag();
                         if (dis <= len && !tFrameNode.isHaveFK) {
                             count++ //可以放就要累加计数
                         }
