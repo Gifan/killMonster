@@ -14,7 +14,7 @@ cc.Class({
         m_n_starlist: { type: cc.Node, default: [] },
         m_n_skinpanel: cc.Node,
         m_n_moregame: cc.Node,
-        recored:cc.Node,
+        recored: cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -57,7 +57,7 @@ cc.Class({
             Utils.playBgmMusic(window.BGM, 0.5);
         }
         this.initMyData();
-        this.m_n_moregame.active = window.MOVEGAME;
+        this.m_n_moregame.active = false;//window.MOVEGAME;
     },
 
     playmuisc() {
@@ -203,18 +203,7 @@ cc.Class({
 
     showGameClubButton() {
         if (typeof (wx) != 'undefined') {
-            if (!this.clubbutton) {
-                this.clubbutton = wx.createGameClubButton({
-                    icon: 'light',
-                    style: {
-                        left: 10,
-                        top: 300,
-                        width: 40,
-                        height: 40
-                    }
-                });
-            }
-            this.clubbutton.show();
+
         }
     },
     hideGameClubButton() {
@@ -237,73 +226,53 @@ cc.Class({
     },
 
     showAdBanner(boo) {
-        if (typeof (wx) == 'undefined') return;
-        let Size = cc.winSize
+        if (typeof (tt) == 'undefined') return;
+        // let Size = cc.winSize
 
-        let Widthnode = cc.find("Canvas/n_funnymap/n_bannerpos");
-        var pos = this.node.convertToWorldSpace(Widthnode);
+        // let Widthnode = cc.find("Canvas/n_funnymap/n_bannerpos");
+        // var pos = this.node.convertToWorldSpace(Widthnode);
 
-        if (Size.height / Size.width > 2) {//适配全面屏 适用于FIXHeight
-            pos.y += (Size.height - 1920) / 2;
-        }
+        // if (Size.height / Size.width > 2) {//适配全面屏 适用于FIXHeight
+        //     pos.y += (Size.height - 1920) / 2;
+        // }
 
-        let system = tt.getSystemInfoSync();
-
-        let adaptScaleH = system.screenHeight / Size.height;
-        var PosY = ((Size.height - pos.y) * adaptScaleH);
-
+        const { windowWidth, windowHeight } = tt.getSystemInfoSync();
+        var targetBannerAdWidth = 200;
         let self = this;
-        if (!boo) {
-            if (this.m_bannerad) {
-                this.m_bannerad.hide();
-            }
-        } else {
-            if (this.m_bannerad)
-                this.m_bannerad.show();
+        if (this.m_bannerad) {
+            this.m_bannerad.destroy();
+            this.m_bannerad = null;
         }
         if (!this.m_bannerad && boo) {
-            if (false && system.SDKVersion < '2.0.4') {
-                wx.showToast({
-                    title: "微信版本过低，无法创建广告banner",
-                    icon: "none",
-                    image: "",
-                    duration: 0,
-                });
-                setTimeout(() => wx.hideToast(), 3000);
-            } else {
-                self.m_bannerad = tt.createBannerAd({
-                    adUnitId: 'adunit-9dd057b6b514245a',
-                    style: {
-                        left: 0,
-                        top: PosY,
-                        width: system.screenWidth,
+            self.m_bannerad = tt.createBannerAd({
+                adUnitId: 'adunit-9dd057b6b514245a',
+                style: {
+                    width: (windowWidth - targetBannerAdWidth) / 2,
+                    top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度
+                }
+            })
+            self.m_bannerad.onResize((size) => {
+                try {
+                    if (self.m_bannerad && self.m_bannerad.style) {
+                        self.m_bannerad.style.top = windowHeight - size.height;
+                        self.m_bannerad.style.left = (windowWidth - size.width) / 2;
                     }
-                })
-                self.m_bannerad.onResize((res1) => {
-                    try {
-                        if (self.m_bannerad && self.m_bannerad.style) {
-
-                            self.m_bannerad.style.top = PosY;
-                            self.m_bannerad.style.height = res1.height;
-                        }
-                    } catch (error) {
-                        console.log("onResize-error", error);
-                    }
-                });
-                self.m_bannerad.onLoad(() => {
-                    console.log('banner 广告加载成功')
-
-                })
+                } catch (error) {
+                    console.log("onResize-error", error);
+                }
+            });
+            self.m_bannerad.onLoad(() => {
+                // console.log('banner 广告加载成功')
                 self.m_bannerad.show().then(() => {
-                    console.log("广告显示成功");
+                    // console.log("广告显示成功");
                 }).catch((err) => {
-                    console.error("广告加载失败", err);
+                    // console.error("广告加载失败", err);
                 })
-                self.m_bannerad.onError(err => {
-                    console.error(err)
-                })
+            })
 
-            }
+            self.m_bannerad.onError(err => {
+                // console.error(err)
+            })
         }
     },
 });

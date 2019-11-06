@@ -17,9 +17,6 @@ cc.Class({
         this.m_loaded2 = false;
         let self = this;
         this._loadnum = 0;
-        if (typeof (wx) != 'undefined') {
-
-        }
         this.m_n_logo.runAction(cc.sequence(cc.fadeIn(0.2), cc.callFunc(() => {
             self.loadres();
             self.loadconfig();
@@ -28,7 +25,6 @@ cc.Class({
         let boo = cc.sys.localStorage.getItem('music');
         let guideboo = cc.sys.localStorage.getItem('guideinfo');
         let change = cc.sys.localStorage.getItem('change');
-        console.log('guideboo', guideboo);
         if (boo && boo != 'null') {
             window.MUSIC_SHOW_OFF = parseInt(boo);
         } else {
@@ -40,7 +36,6 @@ cc.Class({
             window.GUIDE_LEVEL = 1;
         } else {
             window.GUIDE_LEVEL = 0;
-            // cc.sys.localStorage.setItem('guideinfo', '1');
         }
         if (change && change != 'null') {
             window.CHANGE_BLOCK = 1;
@@ -117,6 +112,7 @@ cc.Class({
         });
     },
     enterGame: function () {
+        console.log("enterGame", this._loadnum);
         if (this._loadnum >= 4) {
             if (typeof (tt) != 'undefined')
                 tt.hideLoading();

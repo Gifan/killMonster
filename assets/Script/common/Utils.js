@@ -3,10 +3,7 @@ import Data from '../dataStatistics/Data';
 /**
  * 命名 node = n_  label = l_  sprite = sp_ button = btn_   scrollView = sc_
  */
-let t = console.log;
-console.log = function (...param) {
-    // t(...param);
-}
+
 var Utils = {
 
     //适配分辨率默认高度适配，iphonex宽度适配
@@ -90,9 +87,9 @@ var Utils = {
                 cc.sys.localStorage.setItem(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
                 data = window.INIT_GAME_SAVE_DATA;
             }
-            // if(callback){
-            //     callback(data);
-            // }
+            if(callback){
+                callback(data);
+            }
         }
         else {
 

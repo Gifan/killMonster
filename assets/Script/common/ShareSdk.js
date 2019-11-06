@@ -59,7 +59,7 @@ var ShareSdk = {
     shareAppMessage(object) {
         if (isWeChat) {
             if (typeof (object) != "object") { console.log("param 'object' is not a js object "); return; }
-            if (typeof (object.title) == "undefined") { console.log("param 'object' property title is undefined!"); return; }
+            // if (typeof (object.title) == "undefined") { console.log("param 'object' property title is undefined!"); return; }
             // wx.showShareMenu({
             //     withShareTicket: true,
             // });

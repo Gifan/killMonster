@@ -19,10 +19,10 @@ export default class Common_CommonUtil {
     }
 
     static showShareFailTips() {
-        Common_CommonUtil.getPrefab("prefabs/n_sharebubble", (obj) => {
-            obj.parent = cc.find("Canvas") || cc.director.getScene().children[0];
-            obj.zIndex = 1 << 11;
-        })
+        // Common_CommonUtil.getPrefab("prefabs/n_sharebubble", (obj) => {
+        //     obj.parent = cc.find("Canvas") || cc.director.getScene().children[0];
+        //     obj.zIndex = 1 << 11;
+        // })
     }
     
     static shakeScreen(targetNode, deltaTime: number = 0.02, offset: number = 10) {

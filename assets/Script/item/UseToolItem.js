@@ -54,7 +54,7 @@ cc.Class({
                 });
                 setTimeout(() => wx.hideToast(), 2000);
             };
-            let info = wx.getSystemInfoSync();
+            // let info = wx.getSystemInfoSync();
             // if (info.SDKVersion >= '2.0.4') {
             this.showAd(custom);
             // } else {
