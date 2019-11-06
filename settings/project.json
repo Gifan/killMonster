@@ -9,6 +9,7 @@
   "excluded-modules": [
     "TiledMap",
     "Spine Skeleton",
+    "DragonBones",
     "RichText",
     "MotionStreak",
     "ScrollBar",
@@ -19,7 +20,8 @@
     "WebView",
     "Collider",
     "Physics",
-    "StudioComponent"
+    "StudioComponent",
+    "Native Socket"
   ],
   "facebook": {
     "appID": "",
@@ -36,14 +38,14 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1567406151648,
+  "last-module-event-record-time": 1573026180453,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,
     "width": 960
   },
   "start-scene": "f2475a86-e50d-44fc-a09a-41bf7562e572",
-  "use-customize-simulator": false,
+  "use-customize-simulator": true,
   "use-project-simulator-setting": false,
   "assets-sort-type": "name"
 }
