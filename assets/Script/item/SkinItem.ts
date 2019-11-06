@@ -27,7 +27,7 @@ export default class SkinItem extends cc.Component {
     private _onshowback: boolean = false;
 
     start() {
-        EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
+        // EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
     }
 
     onDestroy() {
@@ -93,9 +93,17 @@ export default class SkinItem extends cc.Component {
             }else{
                 this._onshowback = true;
                 ShareSdk.shareAppMessage({
-                    title: "获得了一个怪兽皮肤，快来看看吧",
-                    imageUrl: window.tempFileURL[1],
-                })
+                    templateId: "bbk5k14g77af284rhv",
+                    success: res => {
+                        this.onSuitUp();
+                    },
+                    fail: err => {
+                        Common_CommonUtil.showShareFailTips();
+                    },
+                    complate: msg => {
+        
+                    },
+                });
             }
         }
         // console.log(window.INIT_GAME_SAVE_DATA.skin)

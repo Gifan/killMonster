@@ -25,7 +25,7 @@ cc.Class({
         this.m_n_newpanel.active = false;
         this.m_n_newpanel_success.active = false;
         // EVENT_LISTENER.on(window.GAME_SAVE_HANDLER, this.updateData, this);
-        EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
+        // EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
         this.updateData();
     },
 
@@ -156,11 +156,12 @@ cc.Class({
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         let self = this;
         ShareSdk.shareAppMessage({
-            title: "炸弹，金币每天领，快来领取吧",
-            imageUrl: window.tempFileURL[0],
+            templateId: "h3k7nisoeffdije5f4",
             success: res => {
                 // cc.director.loadScene(window.GAME_SCENE_NAME);
-                self.m_n_sharenode.active = true;
+                if (this.m_n_newpanel_success.active) {
+                    this.m_n_newpanel_success.active = false;
+                }
             },
             fail: err => {
 

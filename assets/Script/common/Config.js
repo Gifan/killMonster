@@ -340,7 +340,7 @@ window.INVATION_REWARD = false;
 //****************************存储数据 ***********************/
 window.TOOL_NUM = [1, 1];
 window.SKIN_CONFIG_STATE = [2, 0, 0, 0, 0];
-window.GAME_SAVE_TYPE = 2; //数据存储类型  1=本地存储  2=服务端存储
+window.GAME_SAVE_TYPE = 1; //数据存储类型  1=本地存储  2=服务端存储
 window.GAME_SAVE_HANDLER = 'handler_data';
 window.GAME_UPDATE_DATA = 'update_data';
 window.GAME_RANK_LISTENER = 'rank_listener';

@@ -824,7 +824,7 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = wx.createRewardedVideoAd({
+            this.m_videoAd = tt.createRewardedVideoAd({
                 adUnitId: 'adunit-e573e466be94d7f5'
             });
         }
@@ -962,7 +962,7 @@ cc.Class({
     showReliveAd() {
         let self = this;
         if (!this.m_videoAd2) {
-            this.m_videoAd2 = wx.createRewardedVideoAd({
+            this.m_videoAd2 = tt.createRewardedVideoAd({
                 adUnitId: 'adunit-5187ffc3ab571318'
             });
         }
@@ -1126,8 +1126,7 @@ cc.Class({
         } else {
             // Utils.showTipsText("金币不足")
             ShareSdk.shareAppMessage({
-                title: "来帮帮我，我被怪兽消灭了",
-                imageUrl: window.tempFileURL[1],
+                templateId: "1o441aljgg7l1319g5",
                 success: res => {
 
                 },
@@ -1152,7 +1151,7 @@ cc.Class({
             pos.y += (Size.height - 1920) / 2;
         }
 
-        let system = wx.getSystemInfoSync();
+        let system = tt.getSystemInfoSync();
 
         let adaptScaleH = system.screenHeight / Size.height;
         var PosY = ((Size.height - pos.y) * adaptScaleH);
@@ -1163,7 +1162,7 @@ cc.Class({
             this.m_bannerad = null;
         }
         if (!this.m_bannerad && boo) {
-            if (system.SDKVersion < '2.0.4') {
+            if (false && system.SDKVersion < '2.0.4') {
                 wx.showToast({
                     title: "微信版本过低，无法创建广告banner",
                     icon: "none",
@@ -1172,7 +1171,7 @@ cc.Class({
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = wx.createBannerAd({
+                self.m_bannerad = tt.createBannerAd({
                     adUnitId: 'adunit-9dd057b6b514245a',
                     style: {
                         left: 0,

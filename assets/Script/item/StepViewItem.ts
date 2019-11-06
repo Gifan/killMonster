@@ -1,6 +1,6 @@
 import Common_CommonUtil from "../common/Common_CommonUtil";
 import Utils = require("../common/Utils");
-import ShareSDk = require("../common/ShareSdk");
+import ShareSdk = require("../common/ShareSdk");
 const { ccclass, property } = cc._decorator;
 declare var window: any;
 declare var EVENT_LISTENER: any;
@@ -30,7 +30,7 @@ export default class StepViewItem extends cc.Component {
     private _stepname = "";
     private _onshowback: boolean = false;
     start() {
-        EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
+        // EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
     }
 
     onDestroy() {
@@ -101,9 +101,17 @@ export default class StepViewItem extends cc.Component {
 
     onShareStep() {
         this._onshowback = true;
-        ShareSDk.shareAppMessage({
-            title: "消除段位升级到【" + this._stepname + "】,一起来见证吧",
-            imageUrl: window.tempFileURL[1],
+        ShareSdk.shareAppMessage({
+            templateId: "bbk5k14g77af284rhv",
+            success: res => {
+                this.onClose();
+            },
+            fail: err => {
+                // Common_CommonUtil.showShareFailTips();
+            },
+            complate: msg => {
+
+            },
         });
     }
 

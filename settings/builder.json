@@ -7,6 +7,13 @@
     "scheme": "https",
     "skipRecord": false
   },
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
   "encryptJs": true,
   "excludeScenes": [],
   "fb-instant-games": {},
@@ -32,7 +39,7 @@
   "webOrientation": "auto",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "https://cdn.heidong.fun/gameres/t3/p1/release/killmonster",
-    "appid": "wx54a8976f0e7b431c",
+    "appid": "tt8005f6b81f2f37fd",
     "isSubdomain": false,
     "orientation": "portrait",
     "subContext": "subdomine"

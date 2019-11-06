@@ -1,4 +1,3 @@
-import data from "../dataStatistics/Data";
 let isWeChat = (cc.sys.platform == cc.sys.WECHAT_GAME);
 var ShareSdk = {
 
@@ -64,7 +63,8 @@ var ShareSdk = {
             // wx.showShareMenu({
             //     withShareTicket: true,
             // });
-            wx.shareAppMessage(object);
+            // wx.shareAppMessage(object);
+            tt.shareAppMessage(object);
         } else {
             // console.log("it's not wechat platform. onShareAppMessage faied!");
         }

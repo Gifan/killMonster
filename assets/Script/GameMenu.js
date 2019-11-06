@@ -31,11 +31,11 @@ cc.Class({
 
         this.updateMusicBtnSprite(window.MUSIC_SHOW_OFF);
         RankList.setScore(window.INIT_GAME_SAVE_DATA.top_score);
-        if (typeof (wx) != "undefined") {
-            wx.showShareMenu({
+        if (typeof (tt) != "undefined") {
+            tt.showShareMenu({
                 withShareTicket: true,
             });
-            wx.onShareAppMessage(() => {
+            tt.onShareAppMessage(() => {
                 return {
                     title: "好玩又新奇，消磨时间好帮手",
                     imageUrl: window.tempFileURL[1],
@@ -110,8 +110,7 @@ cc.Class({
         let self = this;
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         ShareSdk.shareAppMessage({
-            title: "来助力我一起打怪兽吧",
-            imageUrl: window.tempFileURL[1],
+            templateId: "6mkah7c58jkj7l7lh5",
             success: res => {
                 cc.director.loadScene(window.GAME_SCENE_NAME);
             },
@@ -165,16 +164,14 @@ cc.Class({
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         // console.log(cc.url.raw("resources/common/sharepic.85663.png"));
         ShareSdk.shareAppMessage({
-            title: "今年最好玩最刺激的六边形消除怪兽游戏，快来尝试下",
-            imageUrl: window.tempFileURL[1],
+            templateId: "6mkah7c58jkj7l7lh5",
             success: res => {
-                console.log("res", res)
             },
             fail: err => {
-                console.log("res-err")
+
             },
             complate: msg => {
-                console.log("complate")
+
             },
         });
     },
@@ -248,7 +245,7 @@ cc.Class({
             pos.y += (Size.height - 1920) / 2;
         }
 
-        let system = wx.getSystemInfoSync();
+        let system = tt.getSystemInfoSync();
 
         let adaptScaleH = system.screenHeight / Size.height;
         var PosY = ((Size.height - pos.y) * adaptScaleH);
@@ -263,7 +260,7 @@ cc.Class({
                 this.m_bannerad.show();
         }
         if (!this.m_bannerad && boo) {
-            if (system.SDKVersion < '2.0.4') {
+            if (false && system.SDKVersion < '2.0.4') {
                 wx.showToast({
                     title: "微信版本过低，无法创建广告banner",
                     icon: "none",
@@ -272,7 +269,7 @@ cc.Class({
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = wx.createBannerAd({
+                self.m_bannerad = tt.createBannerAd({
                     adUnitId: 'adunit-9dd057b6b514245a',
                     style: {
                         left: 0,

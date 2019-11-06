@@ -46,7 +46,7 @@ cc.Class({
     onAdBtnClick(event, custom) {
         if (typeof (wx) != 'undefined') {
             let VersionToast = () => {
-                wx.showToast({
+                tt.showToast({
                     title: "微信版本过低，无法看广告",
                     icon: "none",
                     image: "",
@@ -55,11 +55,11 @@ cc.Class({
                 setTimeout(() => wx.hideToast(), 2000);
             };
             let info = wx.getSystemInfoSync();
-            if (info.SDKVersion >= '2.0.4') {
-                this.showAd(custom);
-            } else {
-                VersionToast();
-            }
+            // if (info.SDKVersion >= '2.0.4') {
+            this.showAd(custom);
+            // } else {
+            //     VersionToast();
+            // }
         } else {
             // console.log('it is not wechat');
             this.videoReward(custom);
@@ -69,7 +69,7 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = wx.createRewardedVideoAd({
+            this.m_videoAd = tt.createRewardedVideoAd({
                 adUnitId: 'adunit-e573e466be94d7f5'
             });
         }
@@ -138,8 +138,18 @@ cc.Class({
     onShareGet() {
         this._onshowback = true;
         ShareSdk.shareAppMessage({
-            title: "快扶着这个炸弹，要爆啦！要爆啦！",
-            imageUrl: window.tempFileURL[3],
+            templateId: "1w0sfkbir4r1dfii32",
+            success: res => {
+                window.firstshare = true;
+                this.m_n_shareget.active = window.BOX_SHARE && !window.firstshare;
+                this.videoReward();
+            },
+            fail: err => {
+                // Common_CommonUtil.showShareFailTips();
+            },
+            complate: msg => {
+
+            },
         });
     }
     // update (dt) {},

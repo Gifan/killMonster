@@ -18,7 +18,7 @@ export default class GetBoxGiftItem extends cc.Component {
     private _onshowback: boolean = false;
     private _callback: any = null;
     start() {
-        EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
+        // EVENT_LISTENER.on(window.ON_SHOW_BACK, this.onshowback, this);
     }
 
     showView(callback) {
@@ -70,10 +70,18 @@ export default class GetBoxGiftItem extends cc.Component {
     }
 
     onShareGet() {
-        this._onshowback = true;
+        // this._onshowback = true;
         ShareSdk.shareAppMessage({
-            title: "我就看着你，直到你打开宝箱为止",
-            imageUrl: window.tempFileURL[3],
+            templateId: "963e2h32e2747883hi",
+            success: res => {
+                this.onFreeGet();
+            },
+            fail: err => {
+                Common_CommonUtil.showShareFailTips();
+            },
+            complate: msg => {
+
+            },
         });
     }
     // update (dt) {}

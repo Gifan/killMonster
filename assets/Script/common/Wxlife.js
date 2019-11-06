@@ -11,8 +11,8 @@ window.firstshare = false;
 window.firstvideo = false;
 let time = 0;
 cc.view.enableRetina(true);
-if (typeof (wx) != "undefined") {
-    wx.onHide(() => {
+if (typeof (tt) != "undefined") {
+    tt.onHide(() => {
         // console.log("==========wx HIDE==============");
         wxIsBackGround = true;
         if (window.getdata) {
@@ -21,7 +21,7 @@ if (typeof (wx) != "undefined") {
         time = new Date().getTime();
     });
 
-    wx.onShow((res) => {
+    tt.onShow((res) => {
         // console.log("==========wx SHOW==============");
         if (!wxIsBackGround) {
 
