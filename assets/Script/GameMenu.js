@@ -14,6 +14,7 @@ cc.Class({
         m_n_starlist: { type: cc.Node, default: [] },
         m_n_skinpanel: cc.Node,
         m_n_moregame: cc.Node,
+        recored:cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -21,6 +22,7 @@ cc.Class({
     onLoad() {
         window.GAME_MENU = this;
         Utils.setDesignResolution();
+        cc.game.addPersistRootNode(this.recored);
     },
 
     start() {

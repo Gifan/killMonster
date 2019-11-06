@@ -18,13 +18,7 @@ cc.Class({
         let self = this;
         this._loadnum = 0;
         if (typeof (wx) != 'undefined') {
-            wx.cloud.init({
-                env: window.ENV,
-                traceUser: true,
-                success: (res) => {
-                    // console.log("init-", res);
-                }
-            });
+
         }
         this.m_n_logo.runAction(cc.sequence(cc.fadeIn(0.2), cc.callFunc(() => {
             self.loadres();
