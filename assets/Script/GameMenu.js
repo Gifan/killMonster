@@ -245,7 +245,7 @@ cc.Class({
         }
         if (!this.m_bannerad && boo) {
             self.m_bannerad = tt.createBannerAd({
-                adUnitId: 'adunit-9dd057b6b514245a',
+                adUnitId: '17l06u59lkt7bn5m03',
                 style: {
                     width: (windowWidth - targetBannerAdWidth) / 2,
                     top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度

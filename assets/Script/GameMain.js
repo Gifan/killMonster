@@ -820,27 +820,28 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd) {
             this.m_videoAd = tt.createRewardedVideoAd({
-                adUnitId: 'adunit-e573e466be94d7f5'
+                adUnitId: 'fp27hlfnn6d4g45bi4'
             });
         }
         this.m_videoAd.onError(err => {
             // Utils.showTipsText("error:" + err.errMsg);
+            console.log("onError", err)
         });
+        let onclose = (status) => {
+            self.m_videoAd.offClose(onclose);
+            self.showAdb = false;
+            self.showAdBanner(false);
+            if (status && status.isEnded || status === undefined) {
+                self.videoReward(custom);
+            } else {
 
+            }
+        }
         this.m_videoAd.load()
             .then(() => {
                 self.m_videoAd.show();
                 self.showAdb = true;
-                self.m_videoAd.onClose((status) => {
-                    self.m_videoAd.offClose();
-                    self.showAdb = false;
-                    self.showAdBanner(false);
-                    if (status && status.isEnded || status === undefined) {
-                        self.videoReward(custom);
-                    } else {
-
-                    }
-                });
+                self.m_videoAd.onClose(onclose);
             })
             .catch(err => Utils.showTipsText("拉去视频广告失败，请稍候重试", null, null, null, 60, cc.Color.BLACK, 1.2));
     },
@@ -955,25 +956,25 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd2) {
             this.m_videoAd2 = tt.createRewardedVideoAd({
-                adUnitId: 'adunit-5187ffc3ab571318'
+                adUnitId: 'fp27hlfnn6d4g45bi4'
             });
         }
         this.m_videoAd2.onError(err => {
             // Utils.showTipsText("error:" + err.errMsg);
         });
+        let onclose = (status) => {
+            self.m_videoAd2.offClose(onclose);
+            if (status && status.isEnded || status === undefined) {
+                self.onReliveGameVideo();
+            } else {
 
+            }
+        };
         this.m_videoAd2.load()
             .then(() => {
                 self.m_videoAd2.show();
                 self.showAdBanner(false);
-                self.m_videoAd2.onClose((status) => {
-                    self.m_videoAd2.offClose();
-                    if (status && status.isEnded || status === undefined) {
-                        self.onReliveGameVideo();
-                    } else {
-
-                    }
-                });
+                self.m_videoAd2.onClose(onclose);
             })
             .catch(err => Utils.showTipsText("视频拉取失败，请稍后重试", null, null, null, 60, cc.Color.BLACK, 1.2));
     },
@@ -1152,7 +1153,7 @@ cc.Class({
         }
         if (!this.m_bannerad && boo) {
             self.m_bannerad = tt.createBannerAd({
-                adUnitId: 'adunit-9dd057b6b514245a',
+                adUnitId: '17l06u59lkt7bn5m03',
                 style: {
                     width: (windowWidth - targetBannerAdWidth) / 2,
                     top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度

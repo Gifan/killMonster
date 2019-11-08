@@ -70,24 +70,24 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd) {
             this.m_videoAd = tt.createRewardedVideoAd({
-                adUnitId: 'adunit-e573e466be94d7f5'
+                adUnitId: 'fp27hlfnn6d4g45bi4'
             });
         }
         this.m_videoAd.onError(err => {
 
         });
+        let onclose = (status) => {
+            self.m_videoAd.offClose(onclose);
+            if (status && status.isEnded || status === undefined) {
+                self.videoReward(custom);
+            } else {
 
+            }
+        };
         this.m_videoAd.load()
             .then(() => {
                 self.m_videoAd.show();
-                self.m_videoAd.onClose((status) => {
-                    self.m_videoAd.offClose();
-                    if (status && status.isEnded || status === undefined) {
-                        self.videoReward(custom);
-                    } else {
-
-                    }
-                });
+                self.m_videoAd.onClose(onclose);
             })
             .catch(err => Utils.showTipsText("拉去视频广告失败，请稍候重试", null, null, null, 60, cc.Color.BLACK, 1.2));
     },
