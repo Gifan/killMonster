@@ -7,6 +7,8 @@ export default class ZiJieRecord extends cc.Component {
 
     @property(cc.Node)
     btnZiJieRecord: cc.Node = null;
+    @property(cc.Label)
+    recordTime: cc.Label = null;
 
     public isInitRecord: boolean = false;
     protected changeListener(enable: boolean): void {
@@ -20,12 +22,33 @@ export default class ZiJieRecord extends cc.Component {
     public onClose() {
 
     }
+    private recorTime: number = 0;
+    private startRecord: boolean = false;
 
     public onClickRecord() {
+        if (this.startRecord) {
+            if (this.recorTime < 5) {
+                this.showWxTips('提示', "录制时间需要超过5秒，请稍后", '确定', '取消');
+                return;
+            }
+        }
+
+
         this.recordVideo(() => {
             let ingnode = this.btnZiJieRecord.getChildByName("lping");
             ingnode && (ingnode.active = true);
+            this.recorTime = 0;
+            this.startRecord = true;
+            this.recordTime.string = '0s';
+            this.schedule(() => {
+                this.recorTime++;
+                this.recordTime.string = `${this.recorTime}s`;
+            }, 1);
+
         }, (param) => {
+            this.unscheduleAllCallbacks();
+            this.startRecord = false;
+            this.recordTime.string = '';
             let ingnode = this.btnZiJieRecord.getChildByName("lping");
             ingnode && (ingnode.active = false);
         })
