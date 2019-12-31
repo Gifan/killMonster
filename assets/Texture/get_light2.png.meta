@@ -7,7 +7,7 @@
   "premultiplyAlpha": false,
   "subMetas": {
     "get_light2": {
-      "ver": "1.0.4",
+      "ver": "1.0.3",
       "uuid": "41d2258c-a3f2-4ed8-bc63-96b624e86ccc",
       "rawTextureUuid": "a65ac9b5-1ba7-4bea-8b55-23bc730ffcce",
       "trimType": "auto",
