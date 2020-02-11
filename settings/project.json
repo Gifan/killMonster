@@ -1,4 +1,5 @@
 {
+  "assets-sort-type": "name",
   "collision-matrix": [
     [
       true
@@ -36,7 +37,7 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1567406151648,
+  "last-module-event-record-time": 1581434020265,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,
@@ -44,6 +45,5 @@
   },
   "start-scene": "f2475a86-e50d-44fc-a09a-41bf7562e572",
   "use-customize-simulator": false,
-  "use-project-simulator-setting": false,
-  "assets-sort-type": "name"
+  "use-project-simulator-setting": false
 }
