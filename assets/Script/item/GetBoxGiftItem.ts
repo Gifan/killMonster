@@ -73,7 +73,7 @@ export default class GetBoxGiftItem extends cc.Component {
         this._onshowback = true;
         ShareSdk.shareAppMessage({
             title: "我就看着你，直到你打开宝箱为止",
-            imageUrl: window.tempFileURL[3],
+            imageUrl: window.tempFileURL[1],
         });
     }
     // update (dt) {}

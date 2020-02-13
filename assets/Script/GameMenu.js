@@ -31,6 +31,15 @@ cc.Class({
 
         this.updateMusicBtnSprite(window.MUSIC_SHOW_OFF);
         RankList.setScore(window.INIT_GAME_SAVE_DATA.top_score);
+        const tempFilePath = canvas.toTempFilePathSync({
+            x: 0,
+            y: 0,
+            width: 400,
+            height: 300,
+            destWidth: 400,
+            destHeight: 300
+        })
+        window.tempFileURL[1] = tempFilePath;
         if (typeof (wx) != "undefined") {
             wx.showShareMenu({
                 withShareTicket: true,
@@ -55,7 +64,8 @@ cc.Class({
             Utils.playBgmMusic(window.BGM, 0.5);
         }
         this.initMyData();
-        this.m_n_moregame.active = window.MOVEGAME;
+        this.m_n_moregame.active = false;//window.MOVEGAME;
+
     },
 
     playmuisc() {
@@ -164,6 +174,18 @@ cc.Class({
     onShare() {
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         // console.log(cc.url.raw("resources/common/sharepic.85663.png"));
+        console.log("window.tempFileURL[1]", window.tempFileURL[1]);
+        const tempFilePath = canvas.toTempFilePathSync({
+            x: 10,
+            y: 10,
+            width: 200,
+            height: 150,
+            destWidth: 400,
+            destHeight: 300
+        })
+        qq.shareAppMessage({
+            imageUrl: tempFilePath
+        })
         ShareSdk.shareAppMessage({
             title: "今年最好玩最刺激的六边形消除怪兽游戏，快来尝试下",
             imageUrl: window.tempFileURL[1],
@@ -203,20 +225,20 @@ cc.Class({
     },
 
     showGameClubButton() {
-        if (typeof (wx) != 'undefined') {
-            if (!this.clubbutton) {
-                this.clubbutton = wx.createGameClubButton({
-                    icon: 'light',
-                    style: {
-                        left: 10,
-                        top: 300,
-                        width: 40,
-                        height: 40
-                    }
-                });
-            }
-            this.clubbutton.show();
-        }
+        // if (typeof (wx) != 'undefined') {
+        //     if (!this.clubbutton) {
+        //         this.clubbutton = wx.createGameClubButton({
+        //             icon: 'light',
+        //             style: {
+        //                 left: 10,
+        //                 top: 300,
+        //                 width: 40,
+        //                 height: 40
+        //             }
+        //         });
+        //     }
+        //     this.clubbutton.show();
+        // }
     },
     hideGameClubButton() {
         if (this.clubbutton) {
@@ -248,7 +270,7 @@ cc.Class({
             pos.y += (Size.height - 1920) / 2;
         }
 
-        let system = wx.getSystemInfoSync();
+        let system = qq.getSystemInfoSync();
 
         let adaptScaleH = system.screenHeight / Size.height;
         var PosY = ((Size.height - pos.y) * adaptScaleH);
@@ -263,17 +285,17 @@ cc.Class({
                 this.m_bannerad.show();
         }
         if (!this.m_bannerad && boo) {
-            if (system.SDKVersion < '2.0.4') {
+            if (false && system.SDKVersion < '2.0.4') {
                 wx.showToast({
-                    title: "微信版本过低，无法创建广告banner",
+                    title: "QQ版本过低，无法创建广告banner",
                     icon: "none",
                     image: "",
                     duration: 0,
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = wx.createBannerAd({
-                    adUnitId: 'adunit-9dd057b6b514245a',
+                self.m_bannerad = qq.createBannerAd({
+                    adUnitId: 'b61808068fbd396eb0048a7f8faa6133',
                     style: {
                         left: 0,
                         top: PosY,

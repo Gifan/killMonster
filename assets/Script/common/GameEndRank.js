@@ -27,14 +27,14 @@ cc.Class({
         if (!this.tex) {
             return;
         }
-        this.tex.initWithElement(sharedCanvas);
-        this.tex.handleLoadedTexture();
-        this.display.spriteFrame = new cc.SpriteFrame(this.tex);
+        // this.tex.initWithElement(sharedCanvas);
+        // this.tex.handleLoadedTexture();
+        // this.display.spriteFrame = new cc.SpriteFrame(this.tex);
     },
 
     update() {
-        if (typeof (wx) != "undefined")
-            this._updaetSubDomainCanvas();
+        if (typeof (wx) != "undefined") { }
+        // this._updaetSubDomainCanvas();
 
     }
 

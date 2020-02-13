@@ -5,7 +5,7 @@ import Data from '../dataStatistics/Data';
  */
 let t = console.log;
 console.log = function (...param) {
-    // t(...param);
+    t(...param);
 }
 var Utils = {
 
@@ -82,7 +82,12 @@ var Utils = {
      */
     getSaveData(callback) {
         if (window.GAME_SAVE_TYPE === 1) {
-            let data = cc.sys.localStorage.getItem(window.GAME_SAVE_HANDLER);
+            let data = null;//cc.sys.localStorage.getItem(window.GAME_SAVE_HANDLER);
+            if (cc.sys.platform == cc.sys.WECHAT_GAME) {
+                try {
+                    data = qq.getStorageSync(window.GAME_SAVE_HANDLER);
+                } catch (e) { }
+            }
             if (data) {
                 window.INIT_GAME_SAVE_DATA = JSON.parse(data);
             }
@@ -90,9 +95,9 @@ var Utils = {
                 cc.sys.localStorage.setItem(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
                 data = window.INIT_GAME_SAVE_DATA;
             }
-            // if(callback){
-            //     callback(data);
-            // }
+            if (callback) {
+                callback(data);
+            }
         }
         else {
 
@@ -130,8 +135,13 @@ var Utils = {
      */
     setSaveData() {
         if (window.GAME_SAVE_TYPE === 1) {
-            // console.log("本地数据设置成功", JSON.stringify(window.INIT_GAME_SAVE_DATA));
-            cc.sys.localStorage.setItem(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
+            console.log("本地数据设置成功", JSON.stringify(window.INIT_GAME_SAVE_DATA));
+            // cc.sys.localStorage.setItem(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
+            if (cc.sys.platform == cc.sys.WECHAT_GAME) {
+                try {
+                    qq.setStorageSync(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
+                } catch (e) { }
+            }
         } else {
             const DB = wx.cloud.database({
                 config: {
@@ -403,7 +413,7 @@ var Utils = {
     SetSoundEffect(musicUrl, boo, volum) {
         let voluem = volum ? volum : 1;
         if (window.MUSIC_SHOW_OFF) {
-            cc.loader.loadRes(musicUrl, cc.AudioClip,(err,clip)=>{
+            cc.loader.loadRes(musicUrl, cc.AudioClip, (err, clip) => {
                 window.bgmAudioID = cc.audioEngine.playEffect(clip, false);
             })
             // var audioUrl = cc.url.raw("resources/" + musicUrl);

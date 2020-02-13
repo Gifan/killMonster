@@ -53,7 +53,7 @@ cc.Class({
         let text = `宝宝要哭晕在山上了，快来帮帮它！`;
         ShareSdk.shareAppMessage({
             title: text,
-            imageUrl: window.tempFileURL[2],
+            imageUrl: window.tempFileURL[1],
             success: res => {
 
             },

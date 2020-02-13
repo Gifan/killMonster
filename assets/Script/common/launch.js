@@ -52,7 +52,7 @@ cc.Class({
         this.rankCloseBtn.active = true;
         this.groudGameBtn.active = true;
         this.isShow = true;
-        if(window.GAME_MENU) window.GAME_MENU.showAdBanner(false);
+        if (window.GAME_MENU) window.GAME_MENU.showAdBanner(false);
         // console.log("点击，发消息给子域");
         this.display.node.active = this.isShow;
         this.m_sp_rank_mask.active = this.isShow;
@@ -100,7 +100,7 @@ cc.Class({
         this.playGameBtn.active = false;
         this.groudGameBtn.active = false;
         this.rankCloseBtn.active = false;
-        if(window.GAME_MENU) window.GAME_MENU.showAdBanner(true);
+        if (window.GAME_MENU) window.GAME_MENU.showAdBanner(true);
     },
     //开始游戏按键
     onPlayGameClick() {
@@ -114,21 +114,21 @@ cc.Class({
         if (!this.tex) {
             return;
         }
-        this.tex.initWithElement(sharedCanvas);
-        this.tex.handleLoadedTexture();
-        this.display.spriteFrame = new cc.SpriteFrame(this.tex);
+        // this.tex.initWithElement(sharedCanvas);
+        // this.tex.handleLoadedTexture();
+        // this.display.spriteFrame = new cc.SpriteFrame(this.tex);
     },
 
     update(dt) {
         // this.ShowGroudRankClick();
-        if (typeof (wx) != "undefined")
-            this._updaetSubDomainCanvas();
+        if (typeof (wx) != "undefined") { }
+        // this._updaetSubDomainCanvas();
     },
 
 
     ShowGroudRankClick(event) {
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
-        if(window.GAME_MENU) window.GAME_MENU.showAdBanner(false);
+        if (window.GAME_MENU) window.GAME_MENU.showAdBanner(false);
         if (event.query && event.shareTicket) {
 
             // console.log("=============ShowGroudRankClick================");

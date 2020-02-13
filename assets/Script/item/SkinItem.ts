@@ -90,7 +90,7 @@ export default class SkinItem extends cc.Component {
             if (this._data.way == 0 || !window.SKIN_SHARE) {
                 window.INIT_GAME_SAVE_DATA.gold_num -= this._data.price;
                 EVENT_LISTENER.fire(window.GAME_UPDATE_DATA);
-            }else{
+            } else {
                 this._onshowback = true;
                 ShareSdk.shareAppMessage({
                     title: "获得了一个怪兽皮肤，快来看看吧",

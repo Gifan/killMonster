@@ -463,6 +463,9 @@ cc.Class({
         let addScoreCount = this.getAddScoreCal(XCCount, isDropAdd)
         Utils.showHurtText("+" + addScoreCount, null, 0, 0, 30);
         this.updateScore(addScoreCount);
+        if (window.getdata) {
+            Utils.setSaveData();
+        }
     },
 
     //计算加分的公式
@@ -802,7 +805,7 @@ cc.Class({
             }
             let VersionToast = () => {
                 wx.showToast({
-                    title: "微信版本过低，无法看广告",
+                    title: "QQ版本过低，无法看广告",
                     icon: "none",
                     image: "",
                     duration: 0,
@@ -810,7 +813,7 @@ cc.Class({
                 setTimeout(() => wx.hideToast(), 2000);
             };
             let info = wx.getSystemInfoSync();
-            if (info.SDKVersion >= '2.0.4') {
+            if (true || info.SDKVersion >= '2.0.4') {
                 this.showAd(custom);
             } else {
                 VersionToast();
@@ -824,8 +827,8 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = wx.createRewardedVideoAd({
-                adUnitId: 'adunit-e573e466be94d7f5'
+            this.m_videoAd = qq.createRewardedVideoAd({
+                adUnitId: '4dcca41ee6dbdf931a8946cf29c98822'
             });
         }
         this.m_videoAd.onError(err => {
@@ -940,7 +943,7 @@ cc.Class({
         if (typeof (wx) != 'undefined') {
             let VersionToast = () => {
                 wx.showToast({
-                    title: "微信版本过低，无法看广告",
+                    title: "QQ版本过低，无法看广告",
                     icon: "none",
                     image: "",
                     duration: 0,
@@ -948,7 +951,7 @@ cc.Class({
                 setTimeout(() => wx.hideToast(), 2000);
             };
             let info = wx.getSystemInfoSync();
-            if (info.SDKVersion >= '2.0.4') {
+            if (true || info.SDKVersion >= '2.0.4') {
                 this.showReliveAd();
             } else {
                 VersionToast();
@@ -962,8 +965,8 @@ cc.Class({
     showReliveAd() {
         let self = this;
         if (!this.m_videoAd2) {
-            this.m_videoAd2 = wx.createRewardedVideoAd({
-                adUnitId: 'adunit-5187ffc3ab571318'
+            this.m_videoAd2 = qq.createRewardedVideoAd({
+                adUnitId: '9bfffd313e423391e83aa3df7aff0444'
             });
         }
         this.m_videoAd2.onError(err => {
@@ -1107,6 +1110,9 @@ cc.Class({
     },
 
     onReliveGame() {
+        if (window.getdata) {
+            Utils.setSaveData();
+        }
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         if (window.INIT_GAME_SAVE_DATA.gold_num >= 20) {
             Utils.showTipsText("复活成功");
@@ -1163,17 +1169,17 @@ cc.Class({
             this.m_bannerad = null;
         }
         if (!this.m_bannerad && boo) {
-            if (system.SDKVersion < '2.0.4') {
+            if (false && system.SDKVersion < '2.0.4') {
                 wx.showToast({
-                    title: "微信版本过低，无法创建广告banner",
+                    title: "QQ版本过低，无法创建广告banner",
                     icon: "none",
                     image: "",
                     duration: 0,
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = wx.createBannerAd({
-                    adUnitId: 'adunit-9dd057b6b514245a',
+                self.m_bannerad = qq.createBannerAd({
+                    adUnitId: 'b61808068fbd396eb0048a7f8faa6133',
                     style: {
                         left: 0,
                         top: PosY,

@@ -157,7 +157,7 @@ cc.Class({
         let self = this;
         ShareSdk.shareAppMessage({
             title: "炸弹，金币每天领，快来领取吧",
-            imageUrl: window.tempFileURL[0],
+            imageUrl: window.tempFileURL[1],
             success: res => {
                 // cc.director.loadScene(window.GAME_SCENE_NAME);
                 self.m_n_sharenode.active = true;

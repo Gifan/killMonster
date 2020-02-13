@@ -47,7 +47,7 @@ cc.Class({
         if (typeof (wx) != 'undefined') {
             let VersionToast = () => {
                 wx.showToast({
-                    title: "微信版本过低，无法看广告",
+                    title: "QQ版本过低，无法看广告",
                     icon: "none",
                     image: "",
                     duration: 0,
@@ -69,8 +69,8 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = wx.createRewardedVideoAd({
-                adUnitId: 'adunit-e573e466be94d7f5'
+            this.m_videoAd = qq.createRewardedVideoAd({
+                adUnitId: '9bfffd313e423391e83aa3df7aff0444'
             });
         }
         this.m_videoAd.onError(err => {
@@ -139,7 +139,7 @@ cc.Class({
         this._onshowback = true;
         ShareSdk.shareAppMessage({
             title: "快扶着这个炸弹，要爆啦！要爆啦！",
-            imageUrl: window.tempFileURL[3],
+            imageUrl: window.tempFileURL[1],
         });
     }
     // update (dt) {},

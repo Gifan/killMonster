@@ -17,15 +17,15 @@ cc.Class({
         this.m_loaded2 = false;
         let self = this;
         this._loadnum = 0;
-        if (typeof (wx) != 'undefined') {
-            wx.cloud.init({
-                env: window.ENV,
-                traceUser: true,
-                success: (res) => {
-                    // console.log("init-", res);
-                }
-            });
-        }
+        // if (typeof (wx) != 'undefined') {
+        //     wx.cloud.init({
+        //         env: window.ENV,
+        //         traceUser: true,
+        //         success: (res) => {
+        //             // console.log("init-", res);
+        //         }
+        //     });
+        // }
         this.m_n_logo.runAction(cc.sequence(cc.fadeIn(0.2), cc.callFunc(() => {
             self.loadres();
             self.loadconfig();
@@ -83,12 +83,13 @@ cc.Class({
         let self = this;
         window.tempFileURL = [];
         for (let i = 1; i < 4; i++) {
-            window.tempFileURL.push("");
+            window.tempFileURL.push(cc.url.raw("resources/test.jpg"));
         }
-        if (typeof (wx) != 'undefined') {
-            wx.showLoading({
-                title: "登录中..."
-            });
+        console.log("window.pich", window.tempFileURL);
+        if (false && typeof (wx) != 'undefined') {
+            // wx.showLoading({
+            //     title: "登录中..."
+            // });
 
             // wx.cloud.getTempFileURL({
             //     fileList: ['cloud://killmonster-test-df9a23.603e-killmonster-test-df9a23/game_config/level_config2.json',
@@ -195,6 +196,12 @@ cc.Class({
                 self._loadnum++;
                 self.enterGame();
             });
+            Utils.getSaveData(res => {
+                console.log("Utils.getSaveData", res);
+                window.getdata = true;
+                self._loadnum++;
+                self.enterGame();
+            })
         }
 
         this.MyPreloadScene(window.MENU_SCENE_NAME, (completedCount, totalCount, item) => {

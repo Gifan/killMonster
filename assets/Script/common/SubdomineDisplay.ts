@@ -24,9 +24,9 @@ export default class SubdomineDisplay extends cc.Component {
         if (!this.tex) {
             return;
         }
-        this.tex.initWithElement(sharedCanvas);
-        this.tex.handleLoadedTexture();
-        this.display.spriteFrame = new cc.SpriteFrame(this.tex);
+        // this.tex.initWithElement(sharedCanvas);
+        // this.tex.handleLoadedTexture();
+        // this.display.spriteFrame = new cc.SpriteFrame(this.tex);
     }
 
     // update() {
