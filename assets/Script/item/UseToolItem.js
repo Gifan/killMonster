@@ -70,7 +70,7 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd) {
             this.m_videoAd = tt.createRewardedVideoAd({
-                adUnitId: 'fp27hlfnn6d4g45bi4'
+                adUnitId: '1omu4rrxod1pdpl92g'
             });
         }
         this.m_videoAd.onError(err => {

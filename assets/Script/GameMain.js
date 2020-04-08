@@ -820,7 +820,7 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd) {
             this.m_videoAd = tt.createRewardedVideoAd({
-                adUnitId: 'fp27hlfnn6d4g45bi4'
+                adUnitId: '1omu4rrxod1pdpl92g'
             });
         }
         this.m_videoAd.onError(err => {
@@ -956,7 +956,7 @@ cc.Class({
         let self = this;
         if (!this.m_videoAd2) {
             this.m_videoAd2 = tt.createRewardedVideoAd({
-                adUnitId: 'fp27hlfnn6d4g45bi4'
+                adUnitId: '1omu4rrxod1pdpl92g'
             });
         }
         this.m_videoAd2.onError(err => {
@@ -1153,7 +1153,7 @@ cc.Class({
         }
         if (!this.m_bannerad && boo) {
             self.m_bannerad = tt.createBannerAd({
-                adUnitId: '17l06u59lkt7bn5m03',
+                adUnitId: '32lx3ienrti72a3k76',
                 style: {
                     width: (windowWidth - targetBannerAdWidth) / 2,
                     top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度

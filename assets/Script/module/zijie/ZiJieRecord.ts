@@ -10,6 +10,7 @@ export default class ZiJieRecord extends cc.Component {
     @property(cc.Label)
     recordTime: cc.Label = null;
 
+    private videoPath: any = null;
     public isInitRecord: boolean = false;
     protected changeListener(enable: boolean): void {
 
@@ -24,8 +25,46 @@ export default class ZiJieRecord extends cc.Component {
     }
     private recorTime: number = 0;
     private startRecord: boolean = false;
-
     public onClickRecord() {
+        if (this.videoPath) {
+            tt.shareAppMessage({
+                channel: "video",
+                extra: { videoPath: this.videoPath, videoTopics: ["一起来玩消除怪兽", "新奇有刺激的消除怪兽来啦！"], },
+                title: "消除怪兽",
+                desc: "超级好玩的消除怪兽小视频",
+                // videoPath: res.videoPath,
+                success: () => {
+                    this.videoPath = null;
+                    tt.showToast({
+                        title: "分享成功",
+                        duration: 2000,
+                        success(res) {
+                            console.log(`${res}`);
+                        },
+                        fail(res) {
+                            console.log(`showToast调用失败`);
+                        }
+                    });
+                    this.recordTime.string = "";
+                },
+                fail: (err) => {
+                    console.log('[hd_sdk_zijie]----->弹窗', err);
+                    this.videoPath = null;
+                    this.recordTime.string = "";
+                    tt.showToast({
+                        title: "分享失败",
+                        duration: 2000,
+                        success(res) {
+                            console.log(`${res}`);
+                        },
+                        fail(res) {
+                            console.log(`showToast调用失败`);
+                        }
+                    });
+                }
+            });
+            return;
+        }
         if (this.startRecord) {
             if (this.recorTime < 5) {
                 this.showWxTips('提示', "录制时间需要超过5秒，请稍后", '确定', '取消');
@@ -48,7 +87,7 @@ export default class ZiJieRecord extends cc.Component {
         }, (param) => {
             this.unscheduleAllCallbacks();
             this.startRecord = false;
-            this.recordTime.string = '';
+            this.recordTime.string = '录屏完成\n点击分享';
             let ingnode = this.btnZiJieRecord.getChildByName("lping");
             ingnode && (ingnode.active = false);
         })
@@ -110,25 +149,10 @@ export default class ZiJieRecord extends cc.Component {
 
                 recorder.onStop((res) => {
                     self.isRecordVideo = false;
-                    // console.log('[hd_sdk_zijie]----->录制停止事件', res, onStopCallBack);
+                    console.log('[hd_sdk_zijie]----->录制停止事件', res, onStopCallBack, res.videoPath);
+                    this.videoPath = res.videoPath;
                     if (onStopCallBack)
                         onStopCallBack(null);
-                    tt.shareVideo({
-                        videoPath: res.videoPath,
-                        success: () => {
-                            if (this.stopcb)
-                                this.stopcb(1);
-                        },
-                        fail: (err) => {
-                            // console.log('[hd_sdk_zijie]----->弹窗');
-                            this.showWxTips('提示', '分享视频已取消', '确定', '取消', (res) => {
-
-                            });
-                            if (this.stopcb)
-                                this.stopcb(1);
-                        }
-                    });
-
                 });
                 recorder.onError((res) => {
                     this.isRecordVideo = false;
@@ -166,7 +190,7 @@ export default class ZiJieRecord extends cc.Component {
         if (recorder) {
             recorder.start({
                 // microphoneEnabled: false,
-                duration: 120,
+                duration: 30,
             });
         } else {
             console.log('[hd_sdk_zijie]----->tt.getGameRecorderManager()返回值为空');

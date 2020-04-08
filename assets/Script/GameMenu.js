@@ -112,7 +112,7 @@ cc.Class({
         let self = this;
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         ShareSdk.shareAppMessage({
-            templateId: "6mkah7c58jkj7l7lh5",
+            templateId: "64hhigf10180b6g8gb",
             success: res => {
                 cc.director.loadScene(window.GAME_SCENE_NAME);
             },
@@ -166,7 +166,7 @@ cc.Class({
         Utils.SetSoundEffect(window.BUTTON_CLICK_MUSIC, false, 1);
         // console.log(cc.url.raw("resources/common/sharepic.85663.png"));
         ShareSdk.shareAppMessage({
-            templateId: "6mkah7c58jkj7l7lh5",
+            templateId: "64hhigf10180b6g8gb",
             success: res => {
             },
             fail: err => {
@@ -245,7 +245,7 @@ cc.Class({
         }
         if (!this.m_bannerad && boo) {
             self.m_bannerad = tt.createBannerAd({
-                adUnitId: '17l06u59lkt7bn5m03',
+                adUnitId: '32lx3ienrti72a3k76',
                 style: {
                     width: (windowWidth - targetBannerAdWidth) / 2,
                     top: windowHeight - (targetBannerAdWidth / 16) * 9 // 根据系统约定尺寸计算出广告高度

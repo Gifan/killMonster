@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1.7251915942601155,
-      "y": 1.7251915942601155,
+      "x": 0.49930205421846585,
+      "y": 0.49930205421846585,
       "z": 1
     },
     "_quat": {
@@ -2132,8 +2132,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "GameMenu",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "5cb45NS+yZNLbHP815RF0Ab",
     "handler": "onShare",
     "customEventData": ""
   },
@@ -2598,8 +2598,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "GameMenu",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "5cb45NS+yZNLbHP815RF0Ab",
     "handler": "onOpenStepRank",
     "customEventData": ""
   },
@@ -2785,8 +2785,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "GameMenu",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "5cb45NS+yZNLbHP815RF0Ab",
     "handler": "onOpenSkinPanel",
     "customEventData": ""
   },
@@ -3060,8 +3060,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "GameMenu",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "5cb45NS+yZNLbHP815RF0Ab",
     "handler": "onMusicBtnClick",
     "customEventData": ""
   },
@@ -3280,8 +3280,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "GameMenu",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "5cb45NS+yZNLbHP815RF0Ab",
     "handler": "onStartGame",
     "customEventData": ""
   },
@@ -3831,8 +3831,8 @@
     "target": {
       "__id__": 2
     },
-    "component": "launch",
-    "_componentId": "",
+    "component": "",
+    "_componentId": "258ccpxWURAypXp2UAOUMHy",
     "handler": "onCloseClick",
     "customEventData": ""
   },
@@ -8910,17 +8910,17 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 4,
-      "height": 40
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0.5
+      "x": 0.5,
+      "y": 1
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 35.3,
-      "y": -56.2,
+      "x": 0,
+      "y": -73,
       "z": 0
     },
     "_scale": {
@@ -8955,15 +8955,15 @@
     "_string": "",
     "_N$string": "",
     "_fontSize": 25,
-    "_lineHeight": 40,
+    "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
-    "_N$horizontalAlign": 1,
+    "_N$horizontalAlign": 0,
     "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
+    "_N$fontFamily": "微软雅黑",
     "_N$overflow": 0,
     "_N$cacheMode": 0,
     "_id": "4bBpLBQiFGt6zdXy/Q8+ND"
