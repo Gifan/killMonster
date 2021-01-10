@@ -69,8 +69,8 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = qq.createRewardedVideoAd({
-                adUnitId: '9bfffd313e423391e83aa3df7aff0444'
+            this.m_videoAd = tt.createRewardedVideoAd({
+                adUnitId: 'adunit-5187ffc3ab571318'
             });
         }
         this.m_videoAd.onError(err => {

@@ -827,8 +827,8 @@ cc.Class({
     showAd(custom) {
         let self = this;
         if (!this.m_videoAd) {
-            this.m_videoAd = qq.createRewardedVideoAd({
-                adUnitId: '4dcca41ee6dbdf931a8946cf29c98822'
+            this.m_videoAd = wx.createRewardedVideoAd({
+                adUnitId: 'adunit-5187ffc3ab571318'
             });
         }
         this.m_videoAd.onError(err => {
@@ -965,8 +965,8 @@ cc.Class({
     showReliveAd() {
         let self = this;
         if (!this.m_videoAd2) {
-            this.m_videoAd2 = qq.createRewardedVideoAd({
-                adUnitId: '9bfffd313e423391e83aa3df7aff0444'
+            this.m_videoAd2 = wx.createRewardedVideoAd({
+                adUnitId: 'adunit-5187ffc3ab571318'
             });
         }
         this.m_videoAd2.onError(err => {
@@ -1178,8 +1178,8 @@ cc.Class({
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = qq.createBannerAd({
-                    adUnitId: 'b61808068fbd396eb0048a7f8faa6133',
+                self.m_bannerad = wx.createBannerAd({
+                    adUnitId: 'adunit-9dd057b6b514245a',
                     style: {
                         left: 0,
                         top: PosY,

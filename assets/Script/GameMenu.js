@@ -294,8 +294,8 @@ cc.Class({
                 });
                 setTimeout(() => wx.hideToast(), 3000);
             } else {
-                self.m_bannerad = qq.createBannerAd({
-                    adUnitId: 'b61808068fbd396eb0048a7f8faa6133',
+                self.m_bannerad = wx.createBannerAd({
+                    adUnitId: 'adunit-9dd057b6b514245a',
                     style: {
                         left: 0,
                         top: PosY,
