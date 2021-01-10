@@ -183,7 +183,7 @@ cc.Class({
             destWidth: 400,
             destHeight: 300
         })
-        qq.shareAppMessage({
+        wx.shareAppMessage({
             imageUrl: tempFilePath
         })
         ShareSdk.shareAppMessage({
@@ -270,7 +270,7 @@ cc.Class({
             pos.y += (Size.height - 1920) / 2;
         }
 
-        let system = qq.getSystemInfoSync();
+        let system = wx.getSystemInfoSync();
 
         let adaptScaleH = system.screenHeight / Size.height;
         var PosY = ((Size.height - pos.y) * adaptScaleH);

@@ -85,7 +85,7 @@ var Utils = {
             let data = null;//cc.sys.localStorage.getItem(window.GAME_SAVE_HANDLER);
             if (cc.sys.platform == cc.sys.WECHAT_GAME) {
                 try {
-                    data = qq.getStorageSync(window.GAME_SAVE_HANDLER);
+                    data = wx.getStorageSync(window.GAME_SAVE_HANDLER);
                 } catch (e) { }
             }
             if (data) {
@@ -139,7 +139,7 @@ var Utils = {
             // cc.sys.localStorage.setItem(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
             if (cc.sys.platform == cc.sys.WECHAT_GAME) {
                 try {
-                    qq.setStorageSync(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
+                    wx.setStorageSync(window.GAME_SAVE_HANDLER, JSON.stringify(window.INIT_GAME_SAVE_DATA));
                 } catch (e) { }
             }
         } else {
